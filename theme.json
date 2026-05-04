@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "palette": [
+                {
+                    "slug": "hyla-blue",
+                    "color": "#0054A6",
+                    "name": "HYLA Blauw"
+                },
+                {
+                    "slug": "hyla-dark",
+                    "color": "#1A1A1A",
+                    "name": "Donker Grijs"
+                }
+            ]
+        },
+        "typography": {
+            "fontFamilies": [
+                {
+                    "fontFamily": "Inter, sans-serif",
+                    "name": "Inter",
+                    "slug": "inter"
+                }
+            ]
+        }
+    }
+}
