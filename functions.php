@@ -118,3 +118,17 @@ add_action( 'init', function() {
         pll_register_string( 'HYLA CTA', 'Ontdek meer', 'Thema Oplossingen' );
     }
 });
+
+/**
+ * 7. PERFORMANCE: JS Defer & Emoji Cleanup
+ */
+add_filter('script_loader_tag', function($tag, $handle) {
+    if (is_admin()) return $tag;
+    // Forceer 'defer' op alle scripts voor betere INP-scores
+    return str_replace(' src', ' defer src', $tag);
+}, 10, 2);
+
+add_action('init', function() {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+});
