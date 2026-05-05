@@ -4,39 +4,37 @@
  */
 
 /**
- * SEO: Blokkeer indexatie op staging en local omgevingen
+ * 1. SEO & SECURITY
+ * Blokkeer indexatie op staging/local en regel canonicals
  */
-function hyla_seo_noindex_staging() {
+function hyla_seo_plumbing() {
     $host = $_SERVER['HTTP_HOST'];
+    // Noindex voor niet-live omgevingen
     if (strpos($host, 'local') !== false || strpos($host, 'staging') !== false || strpos($host, 'hyla-belgie.be') === false) {
         echo '<meta name="robots" content="noindex, nofollow, noarchive">' . "\n";
     }
-}
-add_action('wp_head', 'hyla_seo_noindex_staging', 1);
 
-/**
- * SEO: Automatische Canonical Tags
- */
-function hyla_output_canonical() {
+    // Automatische Canonical
     if ( is_singular() ) {
         echo '<link rel="canonical" href="' . get_permalink() . '" />' . "\n";
     } elseif ( is_home() || is_front_page() ) {
         echo '<link rel="canonical" href="' . home_url('/') . '" />' . "\n";
     }
 }
-add_action('wp_head', 'hyla_output_canonical', 2);
+add_action('wp_head', 'hyla_seo_plumbing', 1);
 
+/**
+ * 2. THEME SETUP
+ */
 if ( ! function_exists( 'hyla_setup' ) ) :
     function hyla_setup() {
-        // Ondersteuning voor de Block Editor & Wide Alignment
         add_theme_support( 'wp-block-styles' );
         add_theme_support( 'align-wide' );
         add_theme_support( 'editor-styles' );
         
-        // Laad de theme.json styles in de editor
+        // Zorg dat style.css bestaat in je root, anders hier ook een error
         add_editor_style( 'style.css' );
 
-        // Registreer Navigatie Menu's (voor Polylang)
         register_nav_menus( array(
             'primary' => __( 'Hoofdnavigatie', 'hyla-2026' ),
         ) );
@@ -45,22 +43,19 @@ endif;
 add_action( 'after_setup_theme', 'hyla_setup' );
 
 /**
- * 1. CUSTOM POST TYPES (CPT) - Oplossingen & Cases
- * Dit creëert de architectuur voor de "Cookie-cutter" sectorpagina's.
+ * 3. CUSTOM POST TYPES (CPT)
  */
 function hyla_register_post_types() {
-    // Oplossingen (Solutions)
     register_post_type( 'solutions', array(
         'labels'      => array( 'name' => 'Oplossingen', 'singular_name' => 'Oplossing' ),
         'public'      => true,
         'has_archive' => true,
-        'show_in_rest'=> true, // Cruciaal voor de Block Editor (Gutenberg)
+        'show_in_rest'=> true,
         'menu_icon'   => 'dashicons-lightbulb',
         'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
         'rewrite'     => array( 'slug' => 'oplossingen' ),
     ));
 
-    // Getuigenissen (Testimonials)
     register_post_type( 'testimonials', array(
         'labels'      => array( 'name' => 'Testimonials', 'singular_name' => 'Testimonial' ),
         'public'      => true,
@@ -72,33 +67,54 @@ function hyla_register_post_types() {
 add_action( 'init', 'hyla_register_post_types' );
 
 /**
- * 2. PERFORMANCE PLUMBING - Font Preloading & AVIF
+ * 4. PERFORMANCE & MEDIA
  */
 function hyla_performance_head() {
-    // Preload het belangrijkste font (pas het pad aan zodra je fonts hebt in /assets/fonts/)
-    echo '<link rel="preload" href="' . get_theme_file_uri( '/assets/fonts/inter-var.woff2' ) . '" as="font" type="font/woff2" crossorigin>';
-    
-    // Security/SEO: Noindex voor staging omgevingen (optioneel, check je URL)
-    if ( strpos( $_SERVER['HTTP_HOST'], 'local' ) !== false || strpos( $_SERVER['HTTP_HOST'], 'staging' ) !== false ) {
-        echo '<meta name="robots" content="noindex, nofollow">';
+    // FIX: Alleen preloade als het bestand daadwerkelijk bestaat om de "Base path" error te voorkomen
+    $font_path = '/assets/fonts/inter-var.woff2';
+    if ( file_exists( get_theme_file_path( $font_path ) ) ) {
+        echo '<link rel="preload" href="' . get_theme_file_uri( $font_path ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
     }
 }
 add_action( 'wp_head', 'hyla_performance_head' );
 
-// Sta AVIF uploads toe
-function hyla_allow_avif_mime_types( $mimes ) {
+// AVIF Support
+add_filter( 'upload_mimes', function( $mimes ) {
     $mimes['avif'] = 'image/avif';
     return $mimes;
-}
-add_filter( 'upload_mimes', 'hyla_allow_avif_mime_types' );
+});
 
 /**
- * 3. MEERTALIGHEID - Polylang Strings
+ * 5. TRACKING & CONSENT (GTM)
  */
-function hyla_register_strings() {
+function hyla_gtm_consent_mode() {
+    ?>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
+        });
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <?php
+}
+add_action('wp_head', 'hyla_gtm_consent_mode', 0);
+
+/**
+ * 6. MEERTALIGHEID (Polylang)
+ */
+add_action( 'init', function() {
     if ( function_exists( 'pll_register_string' ) ) {
         pll_register_string( 'HYLA CTA', 'Vraag een gratis demo aan', 'Thema Oplossingen' );
         pll_register_string( 'HYLA CTA', 'Ontdek meer', 'Thema Oplossingen' );
     }
-}
-add_action( 'init', 'hyla_register_strings' );
+});
