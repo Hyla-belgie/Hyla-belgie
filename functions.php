@@ -3,13 +3,14 @@
  * HYLA België 2026 - Core Plumbing (Fase 1A)
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
- * 1. SEO & SECURITY
- * Blokkeer indexatie op staging/local en regel canonicals
+ * 1. SEO, SECURITY & CANONICALS
  */
 function hyla_seo_plumbing() {
     $host = $_SERVER['HTTP_HOST'];
-    // Noindex voor niet-live omgevingen
+    // Noindex voor staging en local omgevingen
     if (strpos($host, 'local') !== false || strpos($host, 'staging') !== false || strpos($host, 'hyla-belgie.be') === false) {
         echo '<meta name="robots" content="noindex, nofollow, noarchive">' . "\n";
     }
@@ -20,21 +21,23 @@ function hyla_seo_plumbing() {
     } elseif ( is_home() || is_front_page() ) {
         echo '<link rel="canonical" href="' . home_url('/') . '" />' . "\n";
     }
+    
+    // Critical CSS Placeholder
+    echo '<style id="hyla-critical-css">/* Critical CSS voor LCP hier injecteren */ .wp-block-cover h1 { text-wrap: balance; }</style>' . "\n";
 }
 add_action('wp_head', 'hyla_seo_plumbing', 1);
 
 /**
- * 2. THEME SETUP
+ * 2. THEME SETUP & FSE SUPPORT
  */
 if ( ! function_exists( 'hyla_setup' ) ) :
     function hyla_setup() {
         add_theme_support( 'wp-block-styles' );
         add_theme_support( 'align-wide' );
         add_theme_support( 'editor-styles' );
-        
-        // Zorg dat style.css bestaat in je root, anders hier ook een error
         add_editor_style( 'style.css' );
 
+        // Registreer menu voor Polylang meertalige ruggengraat
         register_nav_menus( array(
             'primary' => __( 'Hoofdnavigatie', 'hyla-2026' ),
         ) );
@@ -43,9 +46,9 @@ endif;
 add_action( 'after_setup_theme', 'hyla_setup' );
 
 /**
- * 3. CUSTOM POST TYPES (CPT)
+ * 3. CUSTOM POST TYPES & TAXONOMIES
  */
-function hyla_register_post_types() {
+function hyla_register_architecture() {
     register_post_type( 'solutions', array(
         'labels'      => array( 'name' => 'Oplossingen', 'singular_name' => 'Oplossing' ),
         'public'      => true,
@@ -56,21 +59,29 @@ function hyla_register_post_types() {
         'rewrite'     => array( 'slug' => 'oplossingen' ),
     ));
 
+    // Getuigenissen
     register_post_type( 'testimonials', array(
         'labels'      => array( 'name' => 'Testimonials', 'singular_name' => 'Testimonial' ),
         'public'      => true,
         'show_in_rest'=> true,
-        'menu_icon'   => 'dashicons-testimonial',
+        'menu_icon'   => 'dashicons(testimonial)',
         'supports'    => array( 'title', 'editor', 'thumbnail' ),
     ));
+
+    // Taxonomieën vertaalbaar maken
+    register_taxonomy('solution_category', 'solutions', array(
+        'hierarchical' => true,
+        'labels' => array('name' => 'Oplossing Categorieën'),
+        'show_in_rest' => true,
+    ));
 }
-add_action( 'init', 'hyla_register_post_types' );
+add_action( 'init', 'hyla_register_architecture' );
 
 /**
- * 4. PERFORMANCE & MEDIA
+ * 4. PERFORMANCE PLUMBING (Fonts, AVIF, Deferral)
  */
 function hyla_performance_head() {
-    // FIX: Alleen preloade als het bestand daadwerkelijk bestaat om de "Base path" error te voorkomen
+    // Font Preloading
     $font_path = '/assets/fonts/inter-var.woff2';
     if ( file_exists( get_theme_file_path( $font_path ) ) ) {
         echo '<link rel="preload" href="' . get_theme_file_uri( $font_path ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
@@ -84,30 +95,28 @@ add_filter( 'upload_mimes', function( $mimes ) {
     return $mimes;
 });
 
+// JS Deferral
 add_filter('script_loader_tag', function($tag, $handle) {
-    if (is_admin()) return $tag;
-    // Forceer 'defer' op alle scripts voor betere INP-scores
+    if (is_admin() || strpos($handle, 'jquery') !== false) return $tag;
     return str_replace(' src', ' defer src', $tag);
 }, 10, 2);
 
+// Cleanup voor snellere laadtijd
 add_action('init', function() {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('wp_print_styles', 'print_emoji_styles');
 });
 
 /**
- * 5. TRACKING & CONSENT (GTM)
+ * 5. TRACKING & CONSENT (GTM + DebugView)
  */
 function hyla_gtm_consent_mode() {
-    // Check of we op een omgeving zitten waar debugging aan mag
     $is_debug = (strpos($_SERVER['HTTP_HOST'], 'local') !== false || strpos($_SERVER['HTTP_HOST'], 'staging') !== false);
     ?>
-    <!-- 1. Consent Mode Default Settings -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         
-        // Standaard alles op denied (Consent Mode v2)
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
@@ -116,29 +125,36 @@ function hyla_gtm_consent_mode() {
             'wait_for_update': 500
         });
 
-        // 2. Activeer Debug Mode voor GA4 op local/staging
         <?php if ( $is_debug ) : ?>
+        // GA4 DebugView activatie (Acceptatiecriterium)
         gtag('config', 'G-XXXXXXXXXX', { 'debug_mode': true }); 
         <?php endif; ?>
     </script>
 
-    <!-- 3. Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-    <!-- End Google Tag Manager -->
     <?php
 }
 add_action('wp_head', 'hyla_gtm_consent_mode', 0);
 
 /**
- * 6. MEERTALIGHEID (Polylang)
+ * 6. MEERTALIGHEID (Polylang Pro Ruggengraat)
  */
 add_action( 'init', function() {
     if ( function_exists( 'pll_register_string' ) ) {
-        pll_register_string( 'HYLA CTA', 'Vraag een gratis demo aan', 'Thema Oplossingen' );
-        pll_register_string( 'HYLA CTA', 'Ontdek meer', 'Thema Oplossingen' );
+        pll_register_string( 'HYLA CTA', 'Vraag een gratis demo aan', 'Thema Oplossingen', true );
+        pll_register_string( 'HYLA CTA', 'Ontdek meer', 'Thema Oplossingen', true );
+        pll_register_string( 'HYLA Footer', 'Alle rechten voorbehouden', 'Footer', false );
     }
+});
+
+// Taalwisselaar shortcode placeholder
+add_shortcode('hyla_language_switcher', function() {
+    if (function_exists('pll_the_languages')) {
+        return '<ul class="hyla-lang-switch">' . pll_the_languages(array('echo' => 0)) . '</ul>';
+    }
+    return '<!-- Polylang niet actief -->';
 });
