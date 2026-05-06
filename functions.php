@@ -84,14 +84,30 @@ add_filter( 'upload_mimes', function( $mimes ) {
     return $mimes;
 });
 
+add_filter('script_loader_tag', function($tag, $handle) {
+    if (is_admin()) return $tag;
+    // Forceer 'defer' op alle scripts voor betere INP-scores
+    return str_replace(' src', ' defer src', $tag);
+}, 10, 2);
+
+add_action('init', function() {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('wp_print_styles', 'print_emoji_styles');
+});
+
 /**
  * 5. TRACKING & CONSENT (GTM)
  */
 function hyla_gtm_consent_mode() {
+    // Check of we op een omgeving zitten waar debugging aan mag
+    $is_debug = (strpos($_SERVER['HTTP_HOST'], 'local') !== false || strpos($_SERVER['HTTP_HOST'], 'staging') !== false);
     ?>
+    <!-- 1. Consent Mode Default Settings -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        
+        // Standaard alles op denied (Consent Mode v2)
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
@@ -99,12 +115,20 @@ function hyla_gtm_consent_mode() {
             'analytics_storage': 'denied',
             'wait_for_update': 500
         });
+
+        // 2. Activeer Debug Mode voor GA4 op local/staging
+        <?php if ( $is_debug ) : ?>
+        gtag('config', 'G-XXXXXXXXXX', { 'debug_mode': true }); 
+        <?php endif; ?>
     </script>
+
+    <!-- 3. Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
     <?php
 }
 add_action('wp_head', 'hyla_gtm_consent_mode', 0);
@@ -117,18 +141,4 @@ add_action( 'init', function() {
         pll_register_string( 'HYLA CTA', 'Vraag een gratis demo aan', 'Thema Oplossingen' );
         pll_register_string( 'HYLA CTA', 'Ontdek meer', 'Thema Oplossingen' );
     }
-});
-
-/**
- * 7. PERFORMANCE: JS Defer & Emoji Cleanup
- */
-add_filter('script_loader_tag', function($tag, $handle) {
-    if (is_admin()) return $tag;
-    // Forceer 'defer' op alle scripts voor betere INP-scores
-    return str_replace(' src', ' defer src', $tag);
-}, 10, 2);
-
-add_action('init', function() {
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('wp_print_styles', 'print_emoji_styles');
 });
