@@ -1,6 +1,45 @@
-/*
-Theme Name: HYLA België 2026
-Author: Dries
-Description: Clean Stack FSE Theme voor HYLA. Lead-gen focus.
-Version: 1.0.0
-*/
+.hyla-header {
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    background: rgba(255,255,255,0.78);
+
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+
+}
+
+.hyla-header .wp-block-navigation-item__label {
+
+    position: relative;
+    transition: all .25s ease;
+
+}
+
+.hyla-header .wp-block-navigation-item__label::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+    bottom: -6px;
+
+    width: 0%;
+    height: 1px;
+
+    background: #0A4B8F;
+
+    transition: all .25s ease;
+
+}
+
+.hyla-header .wp-block-navigation-item__label:hover::after {
+
+    width: 100%;
+
+}
