@@ -1,45 +1,181 @@
+/*
+Theme Name: HYLA België 2026
+Theme URI: https://hyla-belgie.be
+Author: HYLA
+Version: 1.0
+Text Domain: hyla-2026
+*/
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+/* =========================================================
+   GLASS HEADER
+========================================================= */
+
 .hyla-header {
 
-    position: sticky;
-    top: 0;
-    z-index: 999;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+	background: rgba(255,255,255,0.72);
 
-    background: rgba(255,255,255,0.78);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+	border-bottom: 1px solid rgba(255,255,255,0.28);
 
+	transition:
+		background .35s ease,
+		box-shadow .35s ease,
+		transform .35s ease;
+
+	isolation: isolate;
 }
 
-.hyla-header .wp-block-navigation-item__label {
+.hyla-header.is-scrolled {
 
-    position: relative;
-    transition: all .25s ease;
+	background: rgba(255,255,255,0.88);
 
+	box-shadow:
+		0 10px 40px rgba(7,17,31,0.08),
+		0 2px 8px rgba(7,17,31,0.04);
 }
 
-.hyla-header .wp-block-navigation-item__label::after {
-
-    content: '';
-
-    position: absolute;
-
-    left: 0;
-    bottom: -6px;
-
-    width: 0%;
-    height: 1px;
-
-    background: #0A4B8F;
-
-    transition: all .25s ease;
-
+.hyla-header-inner {
+	min-height: 82px;
 }
 
-.hyla-header .wp-block-navigation-item__label:hover::after {
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-    width: 100%;
+.hyla-header .wp-block-navigation-item__content {
+
+	position: relative;
+
+	text-decoration: none !important;
+
+	transition:
+		opacity .25s ease,
+		color .25s ease;
+}
+
+.hyla-header .wp-block-navigation-item__content::after {
+
+	content: '';
+
+	position: absolute;
+
+	left: 50%;
+	bottom: -6px;
+
+	transform: translateX(-50%);
+
+	width: 0%;
+	height: 1px;
+
+	background: #0A4B8F;
+
+	transition: width .28s ease;
+}
+
+.hyla-header .wp-block-navigation-item__content:hover {
+	opacity: .82;
+}
+
+.hyla-header .wp-block-navigation-item__content:hover::after {
+	width: 100%;
+}
+
+/* active states */
+
+.hyla-header .current-menu-item > a,
+.hyla-header .current-menu-ancestor > a {
+	color: #0A4B8F !important;
+}
+
+.hyla-header .current-menu-item > a::after,
+.hyla-header .current-menu-ancestor > a::after {
+	width: 100%;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hyla-button .wp-element-button {
+
+	transition:
+		transform .25s ease,
+		box-shadow .25s ease,
+		background .25s ease;
+}
+
+.hyla-button .wp-element-button:hover {
+
+	transform: translateY(-2px);
+
+	box-shadow:
+		0 18px 40px rgba(10,75,143,0.22);
+}
+
+/* =========================================================
+   LANGUAGE SWITCHER
+========================================================= */
+
+.hyla-lang-switch-container ul {
+
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.hyla-lang-switch-container a {
+
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: 600;
+
+	color: #07111F;
+
+	opacity: .65;
+
+	transition: opacity .2s ease;
+}
+
+.hyla-lang-switch-container a:hover {
+	opacity: 1;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 991px) {
+
+	.hyla-header {
+		padding-top: .5rem;
+		padding-bottom: .5rem;
+	}
+
+	.hyla-header-inner {
+		min-height: 68px;
+	}
 
 }

@@ -7,41 +7,42 @@
  */
 ?>
 
-<!-- wp:group {"tagName":"header","align":"full","className":"hyla-header","layout":{"type":"constrained","contentSize":"1280px"}} -->
-<header class="wp-block-group alignfull hyla-header">
+<!-- wp:group {"tagName":"header","align":"full","className":"hyla-header is-style-hyla-glass","layout":{"type":"constrained","contentSize":"1280px"}} -->
+<header class="wp-block-group alignfull hyla-header is-style-hyla-glass">
 
-<!-- wp:group {"layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
-<div class="wp-block-group">
+	<!-- wp:group {"className":"hyla-header-inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
+	<div class="wp-block-group hyla-header-inner">
 
-<!-- wp:site-logo {"width":100} /-->
+		<!-- wp:site-logo {"width":100} /-->
 
-<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"center"}} -->
-    <!-- wp:navigation-link {"label":"Home","url":"/"} /-->
-    <!-- wp:navigation-link {"label":"Prive","url":"/prive"} /-->
-    <!-- wp:navigation-link {"label":"Professioneel","url":"/professioneel"} /-->
-    <!-- wp:navigation-link {"label":"Oplossingen","url":"/oplossingen"} /-->
-    <!-- wp:navigation-link {"label":"Service","url":"/service"} /-->
-    <!-- wp:navigation-link {"label":"Blog","url":"/blog"} /-->
-    <!-- wp:navigation-link {"label":"Resources","url":"/resources"} /-->
-    <!-- wp:navigation-link {"label":"Contact","url":"/contact"} /-->
-<!-- /wp:navigation -->
+		<!-- wp:navigation {"overlayMenu":"mobile","className":"hyla-navigation","layout":{"type":"flex","justifyContent":"center"}} /-->
 
-<!-- wp:buttons -->
-<div class="wp-block-buttons">
+		<!-- wp:group {"layout":{"type":"flex","verticalAlignment":"center","flexWrap":"nowrap"}} -->
+		<div class="wp-block-group">
 
-<!-- wp:button {"className":"hyla-button"} -->
-<div class="wp-block-button hyla-button">
-<a class="wp-block-button__link wp-element-button" href="/contact">
-Gratis Demo
-</a>
-</div>
-<!-- /wp:button -->
+			<!-- wp:shortcode -->
+			[hyla_language_switcher]
+			<!-- /wp:shortcode -->
 
-</div>
-<!-- /wp:buttons -->
+			<!-- wp:buttons -->
+			<div class="wp-block-buttons">
 
-</div>
-<!-- /wp:group -->
+				<!-- wp:button {"className":"hyla-button"} -->
+				<div class="wp-block-button hyla-button">
+					<a class="wp-block-button__link wp-element-button" href="/contact">
+						Contact Us!
+					</a>
+				</div>
+				<!-- /wp:button -->
+
+			</div>
+			<!-- /wp:buttons -->
+
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
 
 </header>
 <!-- /wp:group -->
