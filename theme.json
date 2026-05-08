@@ -14,8 +14,8 @@
 
     "layout": {
 
-      "contentSize": "1280px",
-      "wideSize": "1440px"
+      "contentSize": "80vw",
+      "wideSize": "90vw"
 
     },
 
@@ -47,24 +47,42 @@
 
     "color": {
 
-      "palette": [
+     "palette": [
 
         {
           "slug": "primary",
-          "name": "HYLA Blue",
-          "color": "#0A4B8F"
+          "name": "HYLA Orange",
+          "color": "#F47A1F"
         },
 
         {
-          "slug": "navy",
-          "name": "Deep Navy",
-          "color": "#07111F"
+          "slug": "primary-dark",
+          "name": "Deep Orange",
+          "color": "#D85E07"
+        },
+
+        {
+          "slug": "black",
+          "name": "Premium Black",
+          "color": "#0B0B0C"
+        },
+
+        {
+          "slug": "charcoal",
+          "name": "Charcoal",
+          "color": "#161616"
         },
 
         {
           "slug": "light",
           "name": "Soft White",
           "color": "#FFFFFF"
+        },
+
+        {
+          "slug": "cream",
+          "name": "Warm White",
+          "color": "#F7F5F2"
         }
 
       ]
@@ -195,7 +213,7 @@
 
         "color": {
 
-          "background": "#0A4B8F",
+          "background": "#F47A1F",
           "text": "#FFFFFF"
 
         },

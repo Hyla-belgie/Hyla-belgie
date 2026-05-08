@@ -13,7 +13,7 @@
 	<!-- wp:group {"className":"hyla-header-inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
 	<div class="wp-block-group hyla-header-inner">
 
-		<!-- wp:site-logo {"width":100} /-->
+		<!-- wp:site-logo {"height":100} /-->
 
 		<!-- wp:navigation {"overlayMenu":"mobile","className":"hyla-navigation","layout":{"type":"flex","justifyContent":"center"}} /-->
 

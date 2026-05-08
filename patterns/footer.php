@@ -16,7 +16,13 @@
 		<!-- wp:group {"className":"hyla-footer-brand","layout":{"type":"constrained"}} -->
 		<div class="wp-block-group hyla-footer-brand">
 
-			<!-- wp:site-logo {"width":120} /-->
+            <!-- wp:image {"width":"140px","sizeSlug":"full","linkDestination":"custom","href":"/","className":"hyla-footer-logo"} -->
+            <figure class="wp-block-image size-full is-resized hyla-footer-logo">
+                <a href="/">
+                    <img src="https://via.placeholder.com/280x90?text=HYLA+LOGO" alt="HYLA België" style="width:140px"/>
+                </a>
+            </figure>
+            <!-- /wp:image -->
 
 			<!-- wp:paragraph {"className":"hyla-footer-description"} -->
 			<p class="hyla-footer-description">
