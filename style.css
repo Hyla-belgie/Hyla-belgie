@@ -303,3 +303,248 @@
 	background: #0A4B8F;
 	color: white;
 }
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.hyla-footer {
+
+	position: relative;
+
+	background:
+		linear-gradient(
+			180deg,
+			#07111F 0%,
+			#0C1728 100%
+		);
+
+	color: rgba(255,255,255,0.88);
+
+	padding-top: 5rem;
+	padding-bottom: 2rem;
+
+	margin-top: 6rem;
+
+	overflow: hidden;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Ambient glow
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer::before {
+
+	content: '';
+
+	position: absolute;
+
+	top: -200px;
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	width: 700px;
+	height: 700px;
+
+	background:
+		radial-gradient(
+			circle,
+			rgba(10,75,143,0.16) 0%,
+			transparent 70%
+		);
+
+	pointer-events: none;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Layout
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer-top {
+
+	position: relative;
+	z-index: 2;
+
+	gap: 5rem;
+}
+
+.hyla-footer-links {
+
+	gap: 4rem;
+}
+
+.hyla-footer-brand {
+	max-width: 340px;
+}
+
+.hyla-footer-description {
+
+	margin-top: 1.25rem;
+
+	font-size: 15px;
+	line-height: 1.8;
+
+	color: rgba(255,255,255,0.64);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Headings
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer h5 {
+
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+
+	margin-bottom: 1.25rem;
+
+	color: #FFFFFF;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Navigation
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer-navigation {
+
+	gap: .9rem;
+}
+
+.hyla-footer-navigation .wp-block-navigation-item__content,
+.hyla-footer-legal .wp-block-navigation-item__content {
+
+	position: relative;
+
+	color: rgba(255,255,255,0.68) !important;
+
+	font-size: 14px;
+
+	text-decoration: none;
+
+	transition:
+		color .28s ease,
+		transform .28s ease,
+		opacity .28s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Premium underline
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer-navigation .wp-block-navigation-item__content::after,
+.hyla-footer-legal .wp-block-navigation-item__content::after {
+
+	content: '';
+
+	position: absolute;
+
+	left: 0;
+	bottom: -4px;
+
+	width: 0%;
+	height: 1px;
+
+	background: rgba(255,255,255,0.85);
+
+	transition: width .28s ease;
+}
+
+.hyla-footer-navigation .wp-block-navigation-item__content:hover,
+.hyla-footer-legal .wp-block-navigation-item__content:hover {
+
+	color: #FFFFFF !important;
+
+	transform: translateX(2px);
+}
+
+.hyla-footer-navigation .wp-block-navigation-item__content:hover::after,
+.hyla-footer-legal .wp-block-navigation-item__content:hover::after {
+
+	width: 100%;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Separator
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer-separator {
+
+	margin-top: 4rem;
+	margin-bottom: 2rem;
+
+	border-color: rgba(255,255,255,0.08);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Bottom
+|--------------------------------------------------------------------------
+*/
+
+.hyla-footer-bottom {
+
+	position: relative;
+	z-index: 2;
+
+	gap: 1rem;
+}
+
+.hyla-footer-bottom p {
+
+	margin: 0;
+
+	font-size: 13px;
+
+	color: rgba(255,255,255,0.48);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Mobile
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 991px) {
+
+	.hyla-footer {
+
+		padding-top: 4rem;
+	}
+
+	.hyla-footer-top {
+
+		flex-direction: column;
+
+		gap: 3rem;
+	}
+
+	.hyla-footer-links {
+
+		width: 100%;
+
+		flex-direction: column;
+
+		gap: 2.5rem;
+	}
+
+	.hyla-footer-bottom {
+
+		flex-direction: column;
+		align-items: flex-start !important;
+	}
+}
