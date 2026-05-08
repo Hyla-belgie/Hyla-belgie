@@ -1,21 +1,124 @@
-/*
-Theme Name: HYLA België 2026
-Theme URI: https://hyla-belgie.be
-Author: HYLA
-Version: 1.0
-Text Domain: hyla-2026
-*/
-
 /* =========================================================
-   GLOBAL
+   NAVIGATION
 ========================================================= */
 
-html {
-	scroll-behavior: smooth;
+.hyla-navigation {
+	position: relative;
 }
 
-body {
-	overflow-x: hidden;
+/*
+|--------------------------------------------------------------------------
+| Navigation links
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .wp-block-navigation-item__content {
+
+	position: relative;
+
+	display: inline-flex;
+	align-items: center;
+
+	padding: .35rem 0;
+
+	text-decoration: none !important;
+
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 0.015em;
+
+	color: #07111F;
+
+	transition:
+		color .28s ease,
+		opacity .28s ease,
+		transform .28s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Premium animated underline
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .wp-block-navigation-item__content::after {
+
+	content: '';
+
+	position: absolute;
+
+	left: 50%;
+	bottom: -4px;
+
+	transform: translateX(-50%);
+
+	width: 0%;
+	height: 2px;
+
+	border-radius: 999px;
+
+	background:
+		linear-gradient(
+			90deg,
+			#0A4B8F 0%,
+			#2E7DD7 100%
+		);
+
+	box-shadow:
+		0 0 12px rgba(10,75,143,0.25);
+
+	transition:
+		width .32s cubic-bezier(.22,.61,.36,1),
+		opacity .28s ease;
+
+	opacity: .92;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Hover state
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .wp-block-navigation-item__content:hover {
+
+	color: #0A4B8F;
+
+	transform: translateY(-1px);
+
+	opacity: 1;
+}
+
+.hyla-header .wp-block-navigation-item__content:hover::after {
+	width: 100%;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Active states
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .current-menu-item > a,
+.hyla-header .current-menu-ancestor > a {
+
+	color: #0A4B8F !important;
+}
+
+.hyla-header .current-menu-item > a::after,
+.hyla-header .current-menu-ancestor > a::after {
+
+	width: 100%;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Navigation spacing
+|--------------------------------------------------------------------------
+*/
+
+.hyla-navigation .wp-block-navigation__container {
+	gap: 2rem;
 }
 
 /* =========================================================
@@ -28,86 +131,72 @@ body {
 	top: 0;
 	z-index: 1000;
 
-	background: rgba(255,255,255,0.72);
+	background:
+		rgba(255,255,255,0.68);
 
-	backdrop-filter: blur(18px);
-	-webkit-backdrop-filter: blur(18px);
+	backdrop-filter: blur(20px) saturate(180%);
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
 
-	border-bottom: 1px solid rgba(255,255,255,0.28);
+	border-bottom:
+		1px solid rgba(255,255,255,0.22);
 
 	transition:
-		background .35s ease,
-		box-shadow .35s ease,
-		transform .35s ease;
+		background .45s ease,
+		border-color .45s ease,
+		box-shadow .45s ease,
+		transform .45s ease;
 
 	isolation: isolate;
 }
 
-.hyla-header.is-scrolled {
+/*
+|--------------------------------------------------------------------------
+| Subtle glass glow
+|--------------------------------------------------------------------------
+*/
 
-	background: rgba(255,255,255,0.88);
-
-	box-shadow:
-		0 10px 40px rgba(7,17,31,0.08),
-		0 2px 8px rgba(7,17,31,0.04);
-}
-
-.hyla-header-inner {
-	min-height: 82px;
-}
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.hyla-header .wp-block-navigation-item__content {
-
-	position: relative;
-
-	text-decoration: none !important;
-
-	transition:
-		opacity .25s ease,
-		color .25s ease;
-}
-
-.hyla-header .wp-block-navigation-item__content::after {
+.hyla-header::before {
 
 	content: '';
 
 	position: absolute;
+	inset: 0;
 
-	left: 50%;
-	bottom: -6px;
+	background:
+		linear-gradient(
+			180deg,
+			rgba(255,255,255,0.38) 0%,
+			rgba(255,255,255,0.08) 100%
+		);
 
-	transform: translateX(-50%);
-
-	width: 0%;
-	height: 1px;
-
-	background: #0A4B8F;
-
-	transition: width .28s ease;
+	pointer-events: none;
 }
 
-.hyla-header .wp-block-navigation-item__content:hover {
-	opacity: .82;
+/*
+|--------------------------------------------------------------------------
+| Scrolled state
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header.is-scrolled {
+
+	background:
+		rgba(255,255,255,0.82);
+
+	border-bottom:
+		1px solid rgba(255,255,255,0.34);
+
+	box-shadow:
+		0 12px 40px rgba(7,17,31,0.07),
+		0 2px 12px rgba(7,17,31,0.04);
 }
 
-.hyla-header .wp-block-navigation-item__content:hover::after {
-	width: 100%;
-}
+.hyla-header-inner {
 
-/* active states */
+	position: relative;
+	z-index: 2;
 
-.hyla-header .current-menu-item > a,
-.hyla-header .current-menu-ancestor > a {
-	color: #0A4B8F !important;
-}
-
-.hyla-header .current-menu-item > a::after,
-.hyla-header .current-menu-ancestor > a::after {
-	width: 100%;
+	min-height: 82px;
 }
 
 /* =========================================================
@@ -116,66 +205,101 @@ body {
 
 .hyla-button .wp-element-button {
 
+	position: relative;
+
+	overflow: hidden;
+
+	background:
+		linear-gradient(
+			135deg,
+			#0A4B8F 0%,
+			#1462B8 100%
+		);
+
+	border: 1px solid rgba(255,255,255,0.18);
+
+	box-shadow:
+		0 10px 30px rgba(10,75,143,0.18);
+
 	transition:
-		transform .25s ease,
-		box-shadow .25s ease,
-		background .25s ease;
+		transform .28s ease,
+		box-shadow .28s ease,
+		filter .28s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Hover glow
+|--------------------------------------------------------------------------
+*/
+
+.hyla-button .wp-element-button::before {
+
+	content: '';
+
+	position: absolute;
+	inset: 0;
+
+	background:
+		linear-gradient(
+			120deg,
+			transparent 20%,
+			rgba(255,255,255,0.22) 50%,
+			transparent 80%
+		);
+
+	transform: translateX(-120%);
+
+	transition: transform .7s ease;
 }
 
 .hyla-button .wp-element-button:hover {
 
 	transform: translateY(-2px);
 
+	filter: brightness(1.03);
+
 	box-shadow:
-		0 18px 40px rgba(10,75,143,0.22);
+		0 18px 40px rgba(10,75,143,0.24);
 }
 
-/* =========================================================
-   LANGUAGE SWITCHER
-========================================================= */
-
-.hyla-lang-switch-container ul {
-
-	display: flex;
-	align-items: center;
-	gap: .5rem;
-
-	margin: 0;
-	padding: 0;
-
-	list-style: none;
+.hyla-button .wp-element-button:hover::before {
+	transform: translateX(120%);
 }
 
-.hyla-lang-switch-container a {
-
-	text-decoration: none;
-	font-size: 13px;
-	font-weight: 600;
-
-	color: #07111F;
-
-	opacity: .65;
-
-	transition: opacity .2s ease;
-}
-
-.hyla-lang-switch-container a:hover {
-	opacity: 1;
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| Mobile menu panel
+|--------------------------------------------------------------------------
+*/
 
 @media (max-width: 991px) {
 
-	.hyla-header {
-		padding-top: .5rem;
-		padding-bottom: .5rem;
+	.wp-block-navigation__responsive-container {
+
+		background:
+			rgba(255,255,255,0.94) !important;
+
+		backdrop-filter:
+			blur(22px);
+
+		-webkit-backdrop-filter:
+			blur(22px);
 	}
 
-	.hyla-header-inner {
-		min-height: 68px;
+	.wp-block-navigation__responsive-container-content {
+
+		padding-top: 5rem;
 	}
 
+	.wp-block-navigation__responsive-container .wp-block-navigation-item__content {
+
+		font-size: 1.1rem;
+		padding: .75rem 0;
+	}
+}
+
+::selection {
+	background: #0A4B8F;
+	color: white;
 }
