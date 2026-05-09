@@ -96,25 +96,35 @@
 	min-height: 64px;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Logo shrink on scroll
-|--------------------------------------------------------------------------
-*/
+/* =========================================================
+   LOGO DEFAULT
+========================================================= */
 
 .hyla-header img {
 
 	max-height: 62px;
 
+	width: auto;
+	height: auto;
+
+	opacity: 1;
+	visibility: visible;
+
 	transition:
-		max-height .35s ease,
-		transform .35s ease,
-		opacity .35s ease;
+		opacity .25s ease,
+		visibility .25s ease;
 }
+
+/* =========================================================
+   LOGO HIDDEN ON SCROLL
+========================================================= */
 
 .hyla-header.is-scrolled img {
 
-	max-height: 44px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-6px);
+	pointer-events: none;
 }
 
 /* =========================================================
