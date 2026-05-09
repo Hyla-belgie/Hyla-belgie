@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: HYLA Premium Home Hero
- * Slug: hyla/home-hero
+ * Title: HYLA Health Focus Hero
+ * Slug: hyla/home-hero-health
  * Categories: featured
- * Keywords: hero, hyla, premium
+ * Keywords: hero, hyla, health, premium
  * Inserter: true
  */
 ?>
@@ -14,27 +14,29 @@
 	<!-- wp:columns {"verticalAlignment":"top","className":"hyla-hero-grid"} -->
 	<div class="wp-block-columns are-vertically-aligned-top hyla-hero-grid">
 
-		<!-- wp:column {"verticalAlignment":"center","width":"48%","className":"hyla-hero-content"} -->
-		<div class="wp-block-column is-vertically-aligned-center hyla-hero-content" style="flex-basis:48%">
+		<!-- wp:column {"width":"48%","className":"hyla-hero-content"} -->
+		<div class="wp-block-column hyla-hero-content" style="flex-basis:48%">
 
 			<!-- wp:paragraph {"className":"hyla-eyebrow"} -->
 			<p class="hyla-eyebrow">
-				Premium Air & Surface Cleaning
+				Healthy Living • Premium Air Technology
 			</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:heading {"level":1,"className":"hyla-hero-title"} -->
 			<h1 class="hyla-hero-title">
-				Professionele reiniging.<br>
-				Luxe luchtkwaliteit.<br>
-				Eén premium ecosysteem.
+				Premium reiniging<br>
+				voor een gezondere<br>
+				leefomgeving.
 			</h1>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"className":"hyla-hero-description"} -->
 			<p class="hyla-hero-description">
-				HYLA combineert dieptereiniging, luchtzuivering en stoomtechnologie
-				in krachtige oplossingen voor woningen, bedrijven en professionele omgevingen.
+				HYLA combineert geavanceerde luchtzuivering,
+				dieptereiniging en stoomtechnologie om woningen
+				en professionele ruimtes gezonder, frisser en
+				allergievriendelijker te maken.
 			</p>
 			<!-- /wp:paragraph -->
 
@@ -52,7 +54,7 @@
 				<!-- wp:button {"className":"hyla-button-outline"} -->
 				<div class="wp-block-button hyla-button-outline">
 					<a class="wp-block-button__link wp-element-button" href="/oplossingen">
-						Ontdek oplossingen
+						Ontdek HYLA
 					</a>
 				</div>
 				<!-- /wp:button -->
@@ -60,47 +62,33 @@
 			</div>
 			<!-- /wp:buttons -->
 
-			<!-- wp:columns {"className":"hyla-segment-grid"} -->
-			<div class="wp-block-columns hyla-segment-grid">
+			<!-- wp:list {"className":"hyla-health-benefits"} -->
+			<ul class="hyla-health-benefits">
+				<li>Allergievriendelijk</li>
+				<li>Watergebaseerde filtratie</li>
+				<li>Geen stofhercirculatie</li>
+				<li>Gezondere binnenlucht</li>
+			</ul>
+			<!-- /wp:list -->
+
+			<!-- wp:columns {"className":"hyla-benefit-grid"} -->
+			<div class="wp-block-columns hyla-benefit-grid">
 
 				<!-- wp:column -->
 				<div class="wp-block-column">
 
-					<!-- wp:group {"className":"hyla-segment-card"} -->
-					<div class="wp-block-group hyla-segment-card">
-
-						<!-- wp:paragraph {"className":"hyla-segment-label"} -->
-						<p class="hyla-segment-label">
-							B2C
-						</p>
-						<!-- /wp:paragraph -->
+					<!-- wp:group {"className":"hyla-benefit-card"} -->
+					<div class="wp-block-group hyla-benefit-card">
 
 						<!-- wp:heading {"level":4} -->
-						<h4>
-							Voor gezinnen & woningen
-						</h4>
+						<h4>Schonere lucht</h4>
 						<!-- /wp:heading -->
 
 						<!-- wp:paragraph -->
 						<p>
-							Een gezonde leefomgeving dankzij geavanceerde luchtzuivering,
-							dieptereiniging en allergievriendelijke technologie.
+							Verwijdert fijnstof, allergenen en vervuiling uit uw leefomgeving.
 						</p>
 						<!-- /wp:paragraph -->
-
-						<!-- wp:buttons -->
-						<div class="wp-block-buttons">
-
-							<!-- wp:button {"className":"hyla-button-small"} -->
-							<div class="wp-block-button hyla-button-small">
-								<a class="wp-block-button__link wp-element-button" href="/particulier">
-									Ontdek B2C
-								</a>
-							</div>
-							<!-- /wp:button -->
-
-						</div>
-						<!-- /wp:buttons -->
 
 					</div>
 					<!-- /wp:group -->
@@ -111,41 +99,40 @@
 				<!-- wp:column -->
 				<div class="wp-block-column">
 
-					<!-- wp:group {"className":"hyla-segment-card"} -->
-					<div class="wp-block-group hyla-segment-card">
-
-						<!-- wp:paragraph {"className":"hyla-segment-label"} -->
-						<p class="hyla-segment-label">
-							B2B
-						</p>
-						<!-- /wp:paragraph -->
+					<!-- wp:group {"className":"hyla-benefit-card"} -->
+					<div class="wp-block-group hyla-benefit-card">
 
 						<!-- wp:heading {"level":4} -->
-						<h4>
-							Voor bedrijven & professionals
-						</h4>
+						<h4>Dieptereiniging</h4>
 						<!-- /wp:heading -->
 
 						<!-- wp:paragraph -->
 						<p>
-							Professionele reinigingsoplossingen voor kantoren,
-							horeca, wellness, hospitality en commerciële ruimtes.
+							Reinigt oppervlakken en stoffen grondig zonder agressieve chemicaliën.
 						</p>
 						<!-- /wp:paragraph -->
 
-						<!-- wp:buttons -->
-						<div class="wp-block-buttons">
+					</div>
+					<!-- /wp:group -->
 
-							<!-- wp:button {"className":"hyla-button-small"} -->
-							<div class="wp-block-button hyla-button-small">
-								<a class="wp-block-button__link wp-element-button" href="/bedrijven">
-									Ontdek B2B
-								</a>
-							</div>
-							<!-- /wp:button -->
+				</div>
+				<!-- /wp:column -->
 
-						</div>
-						<!-- /wp:buttons -->
+				<!-- wp:column -->
+				<div class="wp-block-column">
+
+					<!-- wp:group {"className":"hyla-benefit-card"} -->
+					<div class="wp-block-group hyla-benefit-card">
+
+						<!-- wp:heading {"level":4} -->
+						<h4>Gezonder wonen</h4>
+						<!-- /wp:heading -->
+
+						<!-- wp:paragraph -->
+						<p>
+							Ideaal voor gezinnen, huisdieren, allergieën en wellnessomgevingen.
+						</p>
+						<!-- /wp:paragraph -->
 
 					</div>
 					<!-- /wp:group -->
@@ -179,14 +166,12 @@
 
 						<!-- wp:paragraph {"className":"hyla-product-tag"} -->
 						<p class="hyla-product-tag">
-							Air & Room Cleaning System
+							Healthy Air Technology
 						</p>
 						<!-- /wp:paragraph -->
 
 						<!-- wp:heading {"level":3} -->
-						<h3>
-							HYLA Multireiniger
-						</h3>
+						<h3>HYLA Multireiniger</h3>
 						<!-- /wp:heading -->
 
 					</div>
@@ -214,9 +199,7 @@
 						<!-- /wp:paragraph -->
 
 						<!-- wp:heading {"level":3} -->
-						<h3>
-							HYLA Stoomreiniger
-						</h3>
+						<h3>HYLA Stoomreiniger</h3>
 						<!-- /wp:heading -->
 
 					</div>
