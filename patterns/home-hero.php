@@ -71,8 +71,8 @@
 			</ul>
 			<!-- /wp:list -->
 
-			<!-- wp:columns {"className":"hyla-benefit-grid"} -->
-			<div class="wp-block-columns hyla-benefit-grid">
+			<!-- wp:group  {"className":"hyla-benefit-grid"} -->
+			<div class="wp-block-group  hyla-benefit-grid">
 
 				<!-- wp:column -->
 				<div class="wp-block-column">
@@ -144,7 +144,7 @@
 			<!-- /wp:columns -->
 
 		</div>
-		<!-- /wp:column -->
+		<!-- /wp:group  -->
 
 		<!-- wp:column {"width":"52%","className":"hyla-hero-visuals"} -->
 		<div class="wp-block-column hyla-hero-visuals" style="flex-basis:52%">

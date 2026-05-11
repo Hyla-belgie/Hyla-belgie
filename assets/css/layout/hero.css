@@ -388,7 +388,8 @@
 ========================================================= */
 
 .hyla-benefit-grid {
-	gap: 1.25rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .hyla-benefit-card {
