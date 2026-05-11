@@ -1,228 +1,114 @@
 {
   "version": 3,
-
   "settings": {
-
     "appearanceTools": true,
 
-    "custom": {
-
-      "headerHeight": "82px",
-      "glassBlur": "18px"
-
-    },
-
     "layout": {
-
       "contentSize": "80vw",
       "wideSize": "90vw"
+    },
 
+    "custom": {
+      "headerHeight": "86px",
+      "headerHeightScrolled": "58px",
+      "glassBlur": "22px",
+      "transition": ".35s cubic-bezier(.22,.61,.36,1)",
+      "radiusSmall": "16px",
+      "radiusMedium": "24px",
+      "radiusLarge": "32px",
+      "radiusPill": "999px"
     },
 
     "spacing": {
-
-      "units": [
-        "px",
-        "rem",
-        "%",
-        "vw",
-        "vh"
+      "units": ["px", "rem", "%", "vw", "vh"],
+      "spacingSizes": [
+        {
+          "slug": "xs",
+          "size": "0.5rem",
+          "name": "XS"
+        },
+        {
+          "slug": "sm",
+          "size": "1rem",
+          "name": "Small"
+        },
+        {
+          "slug": "md",
+          "size": "1.5rem",
+          "name": "Medium"
+        },
+        {
+          "slug": "lg",
+          "size": "2rem",
+          "name": "Large"
+        },
+        {
+          "slug": "xl",
+          "size": "4rem",
+          "name": "XL"
+        }
       ]
-
     },
 
     "typography": {
-
       "fontFamilies": [
-
         {
           "slug": "system",
           "name": "System UI",
           "fontFamily": "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
         }
-
       ]
-
     },
 
     "color": {
-
-     "palette": [
-
-        {
-          "slug": "primary",
-          "name": "HYLA Orange",
-          "color": "#F47A1F"
-        },
-
-        {
-          "slug": "primary-dark",
-          "name": "Deep Orange",
-          "color": "#D85E07"
-        },
-
-        {
-          "slug": "black",
-          "name": "Premium Black",
-          "color": "#0B0B0C"
-        },
-
-        {
-          "slug": "charcoal",
-          "name": "Charcoal",
-          "color": "#161616"
-        },
-
-        {
-          "slug": "light",
-          "name": "Soft White",
-          "color": "#FFFFFF"
-        },
-
-        {
-          "slug": "cream",
-          "name": "Warm White",
-          "color": "#F7F5F2"
-        }
-
-      ]
-
-    }
-
-  },
-
-  "styles": {
-
-    "color": {
-
-      "background": "#FFFFFF",
-      "text": "#07111F"
-
-    },
-
-    "typography": {
-
-      "fontFamily": "var(--wp--preset--font-family--system)",
-      "lineHeight": "1.5"
-
-    },
-
-    "blocks": {
-
-      "core/group": {
-
-        "spacing": {
-
-          "padding": {
-
-            "top": "1rem",
-            "bottom": "1rem",
-            "left": "1.5rem",
-            "right": "1.5rem"
-
-          }
-
-        }
-
-      },
-
-      "core/site-logo": {
-
-        "spacing": {
-
-          "margin": {
-
-            "right": "1rem"
-
-          }
-
-        }
-
-      },
-
-      "core/navigation": {
-
         "typography": {
-
           "fontSize": "14px",
-          "fontWeight": "500",
-          "letterSpacing": "0.02em"
-
+          "fontWeight": "600",
+          "letterSpacing": "0.015em"
         },
-
         "spacing": {
-
-          "blockGap": "1.75rem"
-
+          "blockGap": "2rem"
         },
-
         "color": {
-
-          "text": "#07111F"
-
+          "text": "var(--wp--preset--color--text)"
         }
-
       },
 
       "core/navigation-link": {
-
         "typography": {
-
           "fontSize": "14px",
-          "fontWeight": "500"
-
+          "fontWeight": "600"
         },
-
         "color": {
-
-          "text": "#07111F"
-
+          "text": "var(--wp--preset--color--text)"
         }
-
       },
 
       "core/button": {
-
         "border": {
-
           "radius": "999px"
-
         },
 
         "typography": {
-
           "fontSize": "13px",
-          "fontWeight": "600",
+          "fontWeight": "700",
           "letterSpacing": "0.03em",
           "textTransform": "uppercase"
-
         },
 
         "spacing": {
-
           "padding": {
-
             "top": "0.85rem",
             "bottom": "0.85rem",
             "left": "1.35rem",
             "right": "1.35rem"
-
           }
-
         },
 
         "color": {
-
-          "background": "#F47A1F",
-          "text": "#FFFFFF"
-
-        },
-
-        "shadow": "0 10px 30px rgba(10,75,143,0.15)"
-
+          "background": "var(--wp--preset--color--primary)",
+          "text": "var(--wp--preset--color--light)"
+        }
       }
-
     }
-
   }
-}

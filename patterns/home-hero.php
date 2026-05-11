@@ -171,8 +171,22 @@
 						<!-- /wp:paragraph -->
 
 						<!-- wp:heading {"level":3} -->
-						<h3>HYLA Multireiniger</h3>
-						<!-- /wp:heading -->
+                        <h3>HYLA Multireiniger</h3>
+                        <!-- /wp:heading -->
+
+                        <!-- wp:buttons -->
+                        <div class="wp-block-buttons">
+
+                            <!-- wp:button {"className":"hyla-product-button"} -->
+                            <div class="wp-block-button hyla-product-button">
+                                <a class="wp-block-button__link wp-element-button" href="/contact">
+                                    Meer informatie
+                                </a>
+                            </div>
+                            <!-- /wp:button -->
+
+                        </div>  
+                        <!-- /wp:buttons -->
 
 					</div>
 					<!-- /wp:group -->
@@ -199,8 +213,22 @@
 						<!-- /wp:paragraph -->
 
 						<!-- wp:heading {"level":3} -->
-						<h3>HYLA Stoomreiniger</h3>
-						<!-- /wp:heading -->
+                        <h3>HYLA Stoomreiniger</h3>
+                        <!-- /wp:heading -->
+
+                        <!-- wp:buttons -->
+                        <div class="wp-block-buttons">
+
+                            <!-- wp:button {"className":"hyla-product-button"} -->
+                            <div class="wp-block-button hyla-product-button">
+                                <a class="wp-block-button__link wp-element-button" href="/contact">
+                                    Meer informatie
+                                </a>
+                            </div>
+                            <!-- /wp:button -->
+
+                        </div>
+                        <!-- /wp:buttons -->
 
 					</div>
 					<!-- /wp:group -->

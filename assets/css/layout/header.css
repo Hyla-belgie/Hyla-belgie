@@ -1,0 +1,440 @@
+/* =========================================================
+   PREMIUM HYLA HEADER
+========================================================= */
+
+.hyla-header {
+
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+
+	background:
+		rgba(255,255,255,0.72);
+
+	backdrop-filter:
+		blur(22px)
+		saturate(180%);
+
+	-webkit-backdrop-filter:
+		blur(22px)
+		saturate(180%);
+
+	border-bottom:
+		1px solid rgba(255,255,255,0.22);
+
+	transition:
+		background .45s ease,
+		border-color .45s ease,
+		box-shadow .45s ease,
+		transform .45s ease;
+
+	isolation: isolate;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Premium glow layer
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header::before {
+
+	content: '';
+
+	position: absolute;
+	inset: 0;
+
+	background:
+		linear-gradient(
+			180deg,
+			rgba(255,255,255,0.55) 0%,
+			rgba(255,255,255,0.08) 100%
+		);
+
+	pointer-events: none;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Scroll state
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header.is-scrolled {
+
+	background:
+		rgba(255,255,255,0.88);
+
+	border-bottom:
+		1px solid rgba(255,255,255,0.4);
+
+	box-shadow:
+		0 10px 40px rgba(0,0,0,0.08),
+		0 2px 12px rgba(0,0,0,0.04);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Header height shrink
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header-inner {
+
+	position: relative;
+	z-index: 2;
+
+	min-height: 86px;
+
+	transition:
+		min-height .35s ease,
+		padding .35s ease;
+}
+
+.hyla-header.is-scrolled .hyla-header-inner {
+
+	min-height: 64px;
+}
+
+/* =========================================================
+   LOGO DEFAULT
+========================================================= */
+
+.hyla-header img {
+
+	max-height: 62px;
+
+	width: auto;
+	height: auto;
+
+	opacity: 1;
+	visibility: visible;
+
+	transition:
+		opacity .25s ease,
+		visibility .25s ease;
+}
+
+/* =========================================================
+   LOGO HIDDEN ON SCROLL
+========================================================= */
+
+.hyla-header.is-scrolled img {
+
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-6px);
+	pointer-events: none;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.hyla-navigation .wp-block-navigation__container {
+	gap: 2rem;
+
+	transition: gap .35s ease;
+}
+
+.hyla-header.is-scrolled
+.hyla-navigation .wp-block-navigation__container {
+
+	gap: 1.4rem;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Links
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .wp-block-navigation-item__content {
+
+	position: relative;
+
+	display: inline-flex;
+	align-items: center;
+
+	padding: .35rem 0;
+
+	text-decoration: none !important;
+
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.015em;
+
+	color: #0B0B0C;
+
+	transition:
+		color .3s ease,
+		transform .3s ease,
+		opacity .3s ease,
+		font-size .35s ease,
+		padding .35s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Smaller nav links on scroll
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header.is-scrolled
+.wp-block-navigation-item__content {
+
+	font-size: 13px;
+
+	padding: .18rem 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Orange premium underline
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .wp-block-navigation-item__content::after {
+
+	content: '';
+
+	position: absolute;
+
+	left: 50%;
+	bottom: -5px;
+
+	transform: translateX(-50%);
+
+	width: 0%;
+	height: 2px;
+
+	border-radius: 999px;
+
+	background:
+		linear-gradient(
+			90deg,
+			#F47A1F 0%,
+			#FF9C4A 100%
+		);
+
+	box-shadow:
+		0 0 14px rgba(244,122,31,0.35);
+
+	transition:
+		width .34s cubic-bezier(.22,.61,.36,1),
+		opacity .28s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Hover
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .wp-block-navigation-item__content:hover {
+
+	color: #F47A1F;
+
+	transform: translateY(-1px);
+}
+
+.hyla-header .wp-block-navigation-item__content:hover::after {
+	width: 100%;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Active
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header .current-menu-item > a,
+.hyla-header .current-menu-ancestor > a {
+
+	color: #F47A1F !important;
+}
+
+.hyla-header .current-menu-item > a::after,
+.hyla-header .current-menu-ancestor > a::after {
+
+	width: 100%;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.hyla-button .wp-element-button {
+
+	position: relative;
+
+	overflow: hidden;
+
+	background:
+		linear-gradient(
+			135deg,
+			#F47A1F 0%,
+			#D85E07 100%
+		);
+
+	border:
+		1px solid rgba(255,255,255,0.18);
+
+	box-shadow:
+		0 14px 34px rgba(244,122,31,0.22);
+
+	transition:
+		transform .3s ease,
+		box-shadow .3s ease,
+		filter .3s ease;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Smaller button on scroll
+|--------------------------------------------------------------------------
+*/
+
+.hyla-header.is-scrolled
+.hyla-button .wp-element-button {
+
+	transform: scale(.92);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Shine animation
+|--------------------------------------------------------------------------
+*/
+
+.hyla-button .wp-element-button::before {
+
+	content: '';
+
+	position: absolute;
+	inset: 0;
+
+	background:
+		linear-gradient(
+			120deg,
+			transparent 20%,
+			rgba(255,255,255,0.28) 50%,
+			transparent 80%
+		);
+
+	transform: translateX(-120%);
+
+	transition: transform .75s ease;
+}
+
+.hyla-button .wp-element-button:hover {
+
+	transform: translateY(-2px);
+
+	filter: brightness(1.04);
+
+	box-shadow:
+		0 20px 44px rgba(244,122,31,0.32);
+}
+
+.hyla-button .wp-element-button:hover::before {
+	transform: translateX(120%);
+}
+
+/* =========================================================
+   LANGUAGE SWITCHER
+========================================================= */
+
+.hyla-lang-switch-container ul {
+
+	display: flex;
+	align-items: center;
+	gap: .65rem;
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.hyla-lang-switch-container a {
+
+	position: relative;
+
+	text-decoration: none;
+
+	font-size: 13px;
+	font-weight: 700;
+
+	color: #0B0B0C;
+
+	opacity: .55;
+
+	transition:
+		opacity .25s ease,
+		color .25s ease;
+}
+
+.hyla-lang-switch-container a:hover {
+
+	color: #F47A1F;
+
+	opacity: 1;
+}
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+@media (max-width: 991px) {
+
+	.hyla-header-inner {
+		min-height: 72px;
+	}
+
+	.hyla-header.is-scrolled .hyla-header-inner {
+		min-height: 58px;
+	}
+
+	.wp-block-navigation__responsive-container {
+
+		background:
+			rgba(255,255,255,0.95) !important;
+
+		backdrop-filter:
+			blur(24px);
+
+		-webkit-backdrop-filter:
+			blur(24px);
+	}
+
+	.wp-block-navigation__responsive-container-content {
+
+		padding-top: 5rem;
+	}
+
+	.wp-block-navigation__responsive-container
+	.wp-block-navigation-item__content {
+
+		font-size: 1.1rem;
+		padding: .8rem 0;
+	}
+
+	.hyla-header img {
+		max-height: 52px;
+	}
+
+	.hyla-header.is-scrolled img {
+		max-height: 40px;
+	}
+}
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+::selection {
+
+	background: #F47A1F;
+	color: #FFFFFF;
+}
