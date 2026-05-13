@@ -1,173 +1,115 @@
 /* =========================================================
-   GENERAL HERO STYLING
+   AIRY PRODUCT SHOWCASE HERO (80vw Theme Version)
 ========================================================= */
+
 .hyla-showcase-hero {
-    padding: 6rem 0;
-    background: #F9F9FB;
+    position: relative;
+    /* Soft, breathable mint-to-white gradient */
+    background: linear-gradient(180deg, #F7FAF7 0%, #FFFFFF 100%);
     text-align: center;
+    overflow: hidden;
+    /* Reduced top padding as per image_1ff033.jpg */
+    padding-bottom: 2rem;
 }
 
+/* Inner content wrapper - respects theme.json contentSize */
+.hyla-hero-inner-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Subtle glow for a "Fresh Air" feel */
+.hyla-showcase-hero::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: 5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(122, 201, 135, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Header Spacing */
 .hyla-hero-header {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .hyla-eyebrow {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(255, 122, 24, 0.1);
-    color: #FF7A18;
-    border-radius: 100px;
-    font-size: 12px;
+    padding: 6px 18px;
+    background: rgba(91, 168, 104, 0.1);
+    color: #4A8C54;
+    border-radius: 50px;
+    font-size: 11px;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1.5rem;
 }
 
 .hyla-hero-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+    font-size: clamp(2rem, 4.5vw, 3.2rem) !important;
     font-weight: 850;
+    color: #1A221A;
     line-height: 1.1;
-    color: #07111F;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
 }
 
-/* =========================================================
-   PRODUCT GRID (The Big Images)
-========================================================= */
-.hyla-product-grid {
-    gap: 2rem !important;
-    margin-bottom: 5rem !important;
-}
-
+/* Cards & Grid */
 .hyla-product-card-v2 {
     background: #ffffff;
-    border-radius: 32px;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    height: 100%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    border: 1px solid rgba(122, 201, 135, 0.08);
+    transition: transform 0.4s ease;
 }
 
 .hyla-product-card-v2:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(255, 122, 24, 0.1);
-}
-
-.hyla-product-card-v2 img {
-    width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(122, 201, 135, 0.1);
 }
 
 .hyla-card-content {
-    padding: 2.5rem;
+    padding: 2rem;
     text-align: left;
 }
 
-.hyla-product-tag {
-    font-size: 11px;
-    font-weight: 700;
-    color: #FF7A18;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-}
-
-.hyla-card-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: #07111F;
-}
-
-.hyla-product-button-simple .wp-element-button {
-    background: transparent;
-    color: #07111F;
-    border: 1px solid rgba(7, 17, 31, 0.1);
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 0.6rem 1.2rem;
-}
-
-/* =========================================================
-   INFO CARDS
-========================================================= */
-.hyla-info-grid {
-    gap: 1.5rem !important;
-    margin-bottom: 5rem !important;
-}
-
+/* Info Cards Feature Styling */
 .hyla-info-card {
     background: rgba(255, 255, 255, 0.6);
     padding: 2rem;
     border-radius: 20px;
     text-align: left;
-    height: 100%;
-    border: 1px solid rgba(255,255,255,0.8);
+    border: 1px solid rgba(122, 201, 135, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .hyla-info-card h4 {
+    color: #1A221A;
     font-weight: 700;
-    margin-bottom: 0.75rem;
-    color: #07111F;
+    margin-bottom: 0.5rem;
 }
 
-.hyla-info-card p {
-    font-size: 0.95rem;
-    color: rgba(7, 17, 31, 0.7);
-    line-height: 1.6;
-}
-
-/* =========================================================
-   FOOTER CTAs
-========================================================= */
-.hyla-hero-footer {
-    padding-top: 2rem;
-    border-top: 1px solid rgba(7, 17, 31, 0.05);
-}
-
+/* Buttons */
 .hyla-button-primary .wp-element-button {
-    background: #FF7A18;
-    color: #fff;
-    padding: 1.2rem 2.5rem;
+    background: #F47A1F;
     border-radius: 100px;
+    padding: 1rem 2.2rem;
     font-weight: 700;
-    box-shadow: 0 15px 30px rgba(255, 122, 24, 0.25);
 }
 
 .hyla-button-outline .wp-element-button {
-    background: #ffffff;
-    color: #07111F;
-    padding: 1.2rem 2.5rem;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
     border-radius: 100px;
+    padding: 1rem 2.2rem;
     font-weight: 700;
-    border: 1px solid rgba(7, 17, 31, 0.1);
+    color: #1A221A;
 }
 
-/* =========================================================
-   MOBILE RESPONSIVENESS
-========================================================= */
+/* Mobile */
 @media (max-width: 782px) {
-    .hyla-showcase-hero {
-        padding: 4rem 1rem;
-    }
-    
-    .hyla-product-grid, .hyla-info-grid {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hyla-hero-footer .wp-block-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .hyla-hero-footer .wp-block-button {
-        width: 100%;
-    }
-    
-    .hyla-hero-footer .wp-element-button {
-        width: 100%;
-        text-align: center;
-    }
+    .hyla-showcase-hero { padding-top: 1rem; }
+    .hyla-hero-inner-content { padding-left: 15px; padding-right: 15px; }
 }

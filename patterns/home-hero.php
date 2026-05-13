@@ -45,11 +45,16 @@
 
 					<!-- wp:buttons -->
 					<div class="wp-block-buttons">
-						<!-- wp:button {"className":"hyla-product-button-simple"} -->
-						<div class="wp-block-button hyla-product-button-simple"><a class="wp-block-button__link wp-element-button" href="/hyla-multireiniger">Bekijk details</a></div>
+						<!-- wp:button {"className":"hyla-button-outline"} -->
+						<div class="wp-block-button hyla-button-outline"><a class="wp-block-button__link wp-element-button" href="/multireiniger">Ontdek de multireiniger</a></div>
+						<!-- /wp:button -->
+
+						<!-- wp:button {"className":"hyla-button-primary"} -->
+						<div class="wp-block-button hyla-button hyla-button-primary"><a class="wp-block-button__link wp-element-button" href="/contact">Vraag een gratis demo aan</a></div>
 						<!-- /wp:button -->
 					</div>
 					<!-- /wp:buttons -->
+					 
 				</div>
 				<!-- /wp:group -->
 			</div>
@@ -77,8 +82,12 @@
 
 					<!-- wp:buttons -->
 					<div class="wp-block-buttons">
-						<!-- wp:button {"className":"hyla-product-button-simple"} -->
-						<div class="wp-block-button hyla-product-button-simple"><a class="wp-block-button__link wp-element-button" href="/hyla-stoomreiniger">Bekijk details</a></div>
+						<!-- wp:button {"className":"hyla-button-outline"} -->
+						<div class="wp-block-button hyla-button-outline"><a class="wp-block-button__link wp-element-button" href="/stoomreiniger">Ontdek de stoomreiniger</a></div>
+						<!-- /wp:button -->
+
+						<!-- wp:button {"className":"hyla-button-primary"} -->
+						<div class="wp-block-button hyla-button hyla-button-primary"><a class="wp-block-button__link wp-element-button" href="/contact">Vraag een gratis demo aan</a></div>
 						<!-- /wp:button -->
 					</div>
 					<!-- /wp:buttons -->
