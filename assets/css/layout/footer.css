@@ -1,264 +1,142 @@
 /* =========================================================
-   PREMIUM ECO FOOTER (HEALTH / CLEAN LIVING STYLE)
+   PREMIUM ECO FOOTER (AIRY HEALTH STYLE)
 ========================================================= */
 
 .hyla-footer {
-
-	position: relative;
-
-	background:
-		linear-gradient(
-			180deg,
-			#F6F8F6 0%,
-			#EEF2EE 100%
-		);
-
-	color: rgba(7,17,31,0.78);
-
-	padding-top: 6rem;
-	padding-bottom: 2rem;
-
-	margin-top: 6rem;
-
-	overflow: hidden;
+    position: relative;
+    /* Soft eucalyptus to airy white gradient */
+    background: linear-gradient(180deg, #F0F4F0 0%, #FFFFFF 100%);
+    color: #3A473A; /* Deep forest green-grey for readability */
+    margin-top: 6rem;
+    overflow: hidden;
 }
 
-/* =========================================================
-   SOFT NATURAL GLOW (GREEN / ORANGE BALANCE)
-========================================================= */
+/* Structural Container for Padding */
+.hyla-footer-container {
+    max-width: 1280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 60px !important; /* Generous airy spacing */
+    padding-right: 60px !important;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+}
 
+/* Soft Natural Glow (Healthy balance) */
 .hyla-footer::before {
-
-	content: '';
-
-	position: absolute;
-
-	top: -250px;
-	left: 50%;
-
-	transform: translateX(-50%);
-
-	width: 900px;
-	height: 900px;
-
-	background:
-		radial-gradient(
-			circle,
-			rgba(122, 201, 135, 0.18) 0%,   /* soft green */
-			rgba(244,122,31,0.10) 35%,      /* warm orange */
-			transparent 72%
-		);
-
-	pointer-events: none;
+    content: '';
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(
+        circle, 
+        rgba(122, 201, 135, 0.15) 0%,   /* Soft Sage Green */
+        rgba(244, 122, 31, 0.08) 40%,  /* Hint of Sunset Orange */
+        transparent 75%
+    );
+    pointer-events: none;
 }
 
-/* =========================================================
-   LAYOUT
-========================================================= */
-
+/* Layout */
 .hyla-footer-top {
-
-	position: relative;
-	z-index: 2;
-
-	gap: 5rem;
+    position: relative;
+    z-index: 2;
+    gap: 5rem;
 }
 
 .hyla-footer-links {
-
-	gap: 4rem;
-}
-
-.hyla-footer-brand {
-	max-width: 360px;
+    gap: 4rem;
 }
 
 .hyla-footer-description {
-
-	margin-top: 1.25rem;
-
-	font-size: 15px;
-	line-height: 1.9;
-
-	color: rgba(7,17,31,0.62);
+    margin-top: 1.25rem;
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(58, 71, 58, 0.7); /* Slightly muted text */
 }
 
-/* =========================================================
-   TITLES
-========================================================= */
-
+/* Titles */
 .hyla-footer h5 {
-
-	font-size: 13px;
-	font-weight: 700;
-
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-
-	margin-bottom: 1.4rem;
-
-	color: rgba(7,17,31,0.85);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    color: #2D362D;
 }
 
-/* =========================================================
-   FOOTER LINKS (CLEAN ECO STYLE)
-========================================================= */
+/* Vertical Spacing */
+.hyla-footer .wp-block-navigation { gap: 0.8rem !important; }
+.hyla-footer-contact-col { gap: 0.8rem !important; }
+.hyla-footer-contact-col p { font-size: 14px; margin: 0; line-height: 1.6; }
 
-.hyla-footer-navigation,
-.hyla-footer-legal {
-
-	gap: .9rem;
-}
-
+/* Navigation Links */
 .hyla-footer-navigation .wp-block-navigation-item__content,
 .hyla-footer-legal .wp-block-navigation-item__content {
-
-	position: relative;
-
-	color: rgba(7,17,31,0.62) !important;
-
-	font-size: 14px;
-
-	text-decoration: none;
-
-	transition:
-		color .28s ease,
-		transform .28s ease;
+    position: relative;
+    color: rgba(58, 71, 58, 0.7) !important;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all .3s ease;
 }
 
-/* =========================================================
-   UNDERLINE (NATURAL GRADIENT)
-========================================================= */
-
+/* Underline Animation (Eco Gradient) */
 .hyla-footer-navigation .wp-block-navigation-item__content::after,
 .hyla-footer-legal .wp-block-navigation-item__content::after {
-
-	content: '';
-
-	position: absolute;
-
-	left: 0;
-	bottom: -4px;
-
-	width: 0%;
-	height: 1px;
-
-	background:
-		linear-gradient(
-			90deg,
-			#7AC987 0%,   /* green */
-			#F47A1F 100%  /* orange accent */
-		);
-
-	transition: width .3s ease;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #7AC987 0%, #F47A1F 100%);
+    border-radius: 2px;
+    transition: width .3s ease;
 }
 
 .hyla-footer-navigation .wp-block-navigation-item__content:hover,
 .hyla-footer-legal .wp-block-navigation-item__content:hover {
-
-	color: #07111F !important;
-
-	transform: translateX(3px);
+    color: #2D362D !important;
+    transform: translateY(-1px);
 }
 
 .hyla-footer-navigation .wp-block-navigation-item__content:hover::after,
 .hyla-footer-legal .wp-block-navigation-item__content:hover::after {
-
-	width: 100%;
+    width: 100%;
 }
 
-/* =========================================================
-   SEPARATOR (SOFT, NOT HARSH)
-========================================================= */
-
+/* Separator */
 .hyla-footer-separator {
-
-	margin-top: 4rem;
-	margin-bottom: 2rem;
-
-	border-color:
-		rgba(7,17,31,0.08);
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
-/* =========================================================
-   BOTTOM AREA
-========================================================= */
-
-.hyla-footer-bottom {
-
-	position: relative;
-	z-index: 2;
-
-	gap: 1rem;
-}
-
+/* Bottom Area */
 .hyla-footer-bottom p {
-
-	margin: 0;
-
-	font-size: 13px;
-
-	color: rgba(7,17,31,0.48);
+    font-size: 13px;
+    color: rgba(58, 71, 58, 0.5);
+    margin: 0;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
+/* Mobile */
 @media (max-width: 991px) {
-
-	.hyla-footer {
-
-		padding-top: 4rem;
-	}
-
-	.hyla-footer-top {
-
-		flex-direction: column;
-
-		gap: 3rem;
-	}
-
-	.hyla-footer-links {
-
-		width: 100%;
-
-		flex-direction: column;
-
-		gap: 2.5rem;
-	}
-
-	.hyla-footer-bottom {
-
-		flex-direction: column;
-
-		align-items: flex-start !important;
-	}
+    .hyla-footer-container { padding-left: 24px !important; padding-right: 24px !important; }
+    .hyla-footer-top { flex-direction: column; gap: 3.5rem; }
+    .hyla-footer-links { flex-direction: column; gap: 2.5rem; }
+    .hyla-footer-bottom { flex-direction: column; align-items: flex-start !important; gap: 1.5rem; }
 }
 
-/* =========================================================
-   LOGO
-========================================================= */
-
+/* Logo */
 .hyla-footer-logo img {
-
-	display: block;
-
-	width: auto;
-	height: auto;
-
-	max-height: 85px;
-
-	object-fit: contain;
-
-	transition:
-		transform .3s ease,
-		opacity .3s ease;
+    max-height: 80px;
+	max-width: 80px;
+    transition: transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .hyla-footer-logo img:hover {
-
-	transform: translateY(-2px);
-
-	opacity: .9;
+    transform: scale(1.03);
 }

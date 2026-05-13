@@ -102,10 +102,8 @@
 
 .hyla-header img {
 
-	max-height: 62px;
-
-	width: auto;
-	height: auto;
+	max-height: 80px;
+	max-width: 80px;
 
 	opacity: 1;
 	visibility: visible;
