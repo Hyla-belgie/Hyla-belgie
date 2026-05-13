@@ -1,0 +1,80 @@
+/* =========================================================
+   NATIVE FORM STYLING
+========================================================= */
+
+/* Ensure the card has a clean layout */
+.hyla-form-card {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 32px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+/* Style the raw HTML inputs */
+.hyla-form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Consistent spacing between fields */
+}
+
+.hyla-form-card input[type="text"],
+.hyla-form-card input[type="email"],
+.hyla-form-card input[type="tel"],
+.hyla-form-card textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(7, 17, 31, 0.1);
+    border-radius: 12px;
+    background: #F9F9FB;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    color: #07111F;
+    transition: all 0.3s ease;
+}
+
+/* Hover & Focus States */
+.hyla-form-card input:hover {
+    border-color: rgba(255, 122, 24, 0.3);
+}
+
+.hyla-form-card input:focus,
+.hyla-form-card textarea:focus {
+    outline: none;
+    border-color: #FF7A18;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.1);
+}
+
+/* The Submit Button */
+.hyla-form-card button[type="submit"] {
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.hyla-form-card button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 122, 24, 0.3);
+    background: #e66a15; /* Slightly darker orange */
+}
+
+/* Success Message Styling */
+.hyla-success-message {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+/* Mobile Tweak */
+@media (max-width: 782px) {
+    .hyla-form-card {
+        padding: 2rem 1.5rem;
+    }
+}

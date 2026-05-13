@@ -505,3 +505,26 @@ function hyla_enqueue_assets() {
 }
 
 add_action( 'wp_enqueue_scripts', 'hyla_enqueue_assets' );
+
+function hyla_handle_contact_form() {
+    if (isset($_POST['hyla_form_submitted'])) {
+        // Sanitize data
+        $name    = sanitize_text_field($_POST['hyla_name']);
+        $email   = sanitize_email($_POST['hyla_email']);
+        $phone   = sanitize_text_field($_POST['hyla_phone']);
+        $message = sanitize_textarea_field($_POST['hyla_message']);
+        
+        $to      = get_option('admin_email'); // Sends to your WP admin email
+        $subject = 'Nieuwe Demo Aanvraag: ' . $name;
+        $body    = "Naam: $name \nEmail: $email \nTelefoon: $phone \n\nBericht: \n$message";
+        $headers = array('Content-Type: text/html; charset=UTF-8', 'From: ' . $name . ' <' . $email . '>');
+
+        wp_mail($to, $subject, nl2br($body), $headers);
+        
+        // Redirect to a thank you page or back with a success message
+        wp_redirect(add_query_arg('contact_success', '1', $_SERVER['HTTP_REFERER']));
+        exit;
+    }
+}
+add_action('admin_post_nopriv_hyla_contact', 'hyla_handle_contact_form');
+add_action('admin_post_hyla_contact', 'hyla_handle_contact_form');
