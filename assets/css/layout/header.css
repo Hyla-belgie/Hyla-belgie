@@ -84,7 +84,10 @@
 	position: relative;
 	z-index: 2;
 
-	min-height: 86px;
+	min-height: 70px;
+
+	display: flex;
+	align-items: center;
 
 	transition:
 		min-height .35s ease,
@@ -93,7 +96,16 @@
 
 .hyla-header.is-scrolled .hyla-header-inner {
 
-	min-height: 64px;
+	min-height: 56px;
+}
+
+/* =========================================================
+   REMOVE EXTRA GUTENBERG SPACING
+========================================================= */
+
+.hyla-header * {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 /* =========================================================
@@ -102,15 +114,17 @@
 
 .hyla-header img {
 
-	max-height: 80px;
-	max-width: 80px;
+	max-height: 64px;
+	max-width: 64px;
 
 	opacity: 1;
 	visibility: visible;
 
 	transition:
 		opacity .25s ease,
-		visibility .25s ease;
+		visibility .25s ease,
+		transform .25s ease,
+		max-height .35s ease;
 }
 
 /* =========================================================
@@ -121,7 +135,9 @@
 
 	opacity: 0;
 	visibility: hidden;
+
 	transform: translateY(-6px);
+
 	pointer-events: none;
 }
 
@@ -130,7 +146,10 @@
 ========================================================= */
 
 .hyla-navigation .wp-block-navigation__container {
-	gap: 2rem;
+
+	gap: 1.6rem;
+
+	align-items: center;
 
 	transition: gap .35s ease;
 }
@@ -138,7 +157,7 @@
 .hyla-header.is-scrolled
 .hyla-navigation .wp-block-navigation__container {
 
-	gap: 1.4rem;
+	gap: 1.2rem;
 }
 
 /*
@@ -154,13 +173,15 @@
 	display: inline-flex;
 	align-items: center;
 
-	padding: .35rem 0;
+	padding: .15rem 0;
 
 	text-decoration: none !important;
 
 	font-size: 14px;
 	font-weight: 600;
 	letter-spacing: 0.015em;
+
+	line-height: 1.1;
 
 	color: #0B0B0C;
 
@@ -183,7 +204,7 @@
 
 	font-size: 13px;
 
-	padding: .18rem 0;
+	padding: .08rem 0;
 }
 
 /*
@@ -237,6 +258,7 @@
 }
 
 .hyla-header .wp-block-navigation-item__content:hover::after {
+
 	width: 100%;
 }
 
@@ -267,6 +289,11 @@
 	position: relative;
 
 	overflow: hidden;
+
+	padding:
+		0.7rem 1.2rem;
+
+	line-height: 1;
 
 	background:
 		linear-gradient(
@@ -336,6 +363,7 @@
 }
 
 .hyla-button .wp-element-button:hover::before {
+
 	transform: translateX(120%);
 }
 
@@ -347,7 +375,7 @@
 
 	display: flex;
 	align-items: center;
-	gap: .65rem;
+	gap: .55rem;
 
 	margin: 0;
 	padding: 0;
@@ -363,6 +391,8 @@
 
 	font-size: 13px;
 	font-weight: 700;
+
+	line-height: 1;
 
 	color: #0B0B0C;
 
@@ -387,11 +417,13 @@
 @media (max-width: 991px) {
 
 	.hyla-header-inner {
-		min-height: 72px;
+
+		min-height: 62px;
 	}
 
 	.hyla-header.is-scrolled .hyla-header-inner {
-		min-height: 58px;
+
+		min-height: 52px;
 	}
 
 	.wp-block-navigation__responsive-container {
@@ -408,22 +440,26 @@
 
 	.wp-block-navigation__responsive-container-content {
 
-		padding-top: 5rem;
+		padding-top: 4rem;
 	}
 
 	.wp-block-navigation__responsive-container
 	.wp-block-navigation-item__content {
 
-		font-size: 1.1rem;
-		padding: .8rem 0;
+		font-size: 1rem;
+
+		padding: .65rem 0;
 	}
 
 	.hyla-header img {
-		max-height: 52px;
+
+		max-height: 48px;
+		max-width: 48px;
 	}
 
 	.hyla-header.is-scrolled img {
-		max-height: 40px;
+
+		max-height: 38px;
 	}
 }
 
