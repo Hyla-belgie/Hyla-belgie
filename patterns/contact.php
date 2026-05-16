@@ -26,18 +26,80 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
+                    <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" 
+                        method="post" 
+                        enctype="multipart/form-data"
+                        class="hyla-contact-form">
+
                         <input type="hidden" name="action" value="hyla_contact">
                         <input type="hidden" name="hyla_form_submitted" value="1">
-                        
-                        <input type="text" name="hyla_name" placeholder="Uw Naam" required>
-                        <input type="email" name="hyla_email" placeholder="E-mailadres" required>
-                        <input type="tel" name="hyla_phone" placeholder="Telefoonnummer">
-                        <textarea name="hyla_message" rows="4" placeholder="Uw bericht of voorkeur voor datum..."></textarea>
-                        
-                        <button type="submit" class="wp-element-button" style="background: #FF7A18; color: #fff; width: 100%; border: none; padding: 1.2rem; border-radius: 100px; font-weight: 700; cursor: pointer;">
-                            Demo Aanvragen
+
+                        <div class="hyla-form-row">
+                            <input type="text" 
+                                name="hyla_first_name" 
+                                placeholder="Voornaam" 
+                                required>
+
+                            <input type="text" 
+                                name="hyla_last_name" 
+                                placeholder="Achternaam" 
+                                required>
+                        </div>
+
+                        <div class="hyla-form-row">
+                            <input type="email" 
+                                name="hyla_email" 
+                                placeholder="E-mailadres" 
+                                required>
+
+                            <input type="tel" 
+                                name="hyla_phone" 
+                                placeholder="Telefoonnummer">
+                        </div>
+
+                        <input type="text" 
+                            name="hyla_postal_code" 
+                            placeholder="Postcode" 
+                            required>
+
+                        <select name="hyla_subject" required>
+                            <option value="">Onderwerp van aanvraag</option>
+                            <option value="multireiniger">Multireiniger</option>
+                            <option value="stoomreiniger">Stoomreiniger</option>
+                            <option value="accesoires">Accessoires</option>
+                            <option value="service">Service</option>
+                            <option value="vacature">Vacature</option>
+                        </select>
+
+                        <textarea name="hyla_message" 
+                                rows="4" 
+                                placeholder="Uw bericht of voorkeur voor datum..."></textarea>
+
+                        <div class="hyla-upload-wrapper">
+                            <label for="hyla_file" class="hyla-upload-label">
+                                Bestand uploaden
+                            </label>
+
+                            <input type="file" 
+                                id="hyla_file"
+                                name="hyla_file"
+                                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        </div>
+
+                        <label class="hyla-checkbox">
+                            <input type="checkbox" 
+                                name="hyla_privacy" 
+                                required>
+
+                            <span>
+                                Ik ga akkoord met het privacybeleid
+                            </span>
+                        </label>
+
+                        <button type="submit" class="wp-element-button">
+                            Aanvragen
                         </button>
+
                     </form>
                 </div>
             </div>

@@ -72,6 +72,113 @@
     border: 1px solid rgba(46, 125, 50, 0.1);
 }
 
+/* =========================================================
+   ENHANCED FORM FIELDS
+========================================================= */
+
+.hyla-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Two-column rows */
+.hyla-form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.hyla-form-row > * {
+    flex: 1;
+}
+
+/* Select Styling */
+.hyla-form-card select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(7, 17, 31, 0.1);
+    border-radius: 12px;
+    background: #F9F9FB;
+    font-size: 16px;
+    color: #07111F;
+    transition: all 0.3s ease;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Shared focus states */
+.hyla-form-card select:focus,
+.hyla-form-card input:focus,
+.hyla-form-card textarea:focus {
+    outline: none;
+    border-color: #FF7A18;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.1);
+}
+
+/* File Upload */
+.hyla-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hyla-upload-label {
+    font-weight: 600;
+    color: #07111F;
+}
+
+.hyla-form-card input[type="file"] {
+    background: #F9F9FB;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px dashed rgba(7, 17, 31, 0.15);
+    cursor: pointer;
+}
+
+/* Checkbox */
+.hyla-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4B5563;
+    cursor: pointer;
+}
+
+.hyla-checkbox input[type="checkbox"] {
+    margin-top: 0.2rem;
+    accent-color: #FF7A18;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Button */
+.hyla-contact-form button[type="submit"] {
+    background: #FF7A18;
+    color: #fff;
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 100px;
+    font-weight: 700;
+    border: none;
+}
+
+/* Mobile */
+@media (max-width: 782px) {
+
+    .hyla-form-row {
+        flex-direction: column;
+    }
+
+    .hyla-form-card {
+        padding: 2rem 1.5rem;
+    }
+
+}
+
 /* Mobile Tweak */
 @media (max-width: 782px) {
     .hyla-form-card {

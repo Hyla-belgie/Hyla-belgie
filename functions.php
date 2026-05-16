@@ -507,24 +507,108 @@ function hyla_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'hyla_enqueue_assets' );
 
 function hyla_handle_contact_form() {
-    if (isset($_POST['hyla_form_submitted'])) {
-        // Sanitize data
-        $name    = sanitize_text_field($_POST['hyla_name']);
-        $email   = sanitize_email($_POST['hyla_email']);
-        $phone   = sanitize_text_field($_POST['hyla_phone']);
-        $message = sanitize_textarea_field($_POST['hyla_message']);
-        
-        $to      = get_option('admin_email'); // Sends to your WP admin email
-        $subject = 'Nieuwe Demo Aanvraag: ' . $name;
-        $body    = "Naam: $name \nEmail: $email \nTelefoon: $phone \n\nBericht: \n$message";
-        $headers = array('Content-Type: text/html; charset=UTF-8', 'From: ' . $name . ' <' . $email . '>');
 
-        wp_mail($to, $subject, nl2br($body), $headers);
-        
-        // Redirect to a thank you page or back with a success message
-        wp_redirect(add_query_arg('contact_success', '1', $_SERVER['HTTP_REFERER']));
-        exit;
+    if (!isset($_POST['hyla_form_submitted'])) {
+        return;
     }
+
+    // =========================================
+    // PRIVACY CHECK
+    // =========================================
+    if (empty($_POST['hyla_privacy'])) {
+        wp_die('Gelieve akkoord te gaan met het privacybeleid.');
+    }
+
+    // =========================================
+    // SANITIZE FORM DATA
+    // =========================================
+    $first_name = sanitize_text_field($_POST['hyla_first_name']);
+    $last_name  = sanitize_text_field($_POST['hyla_last_name']);
+    $email      = sanitize_email($_POST['hyla_email']);
+    $phone      = sanitize_text_field($_POST['hyla_phone']);
+    $postal     = sanitize_text_field($_POST['hyla_postal_code']);
+    $subject    = sanitize_text_field($_POST['hyla_subject']);
+    $message    = sanitize_textarea_field($_POST['hyla_message']);
+
+    // Full name
+    $full_name = trim($first_name . ' ' . $last_name);
+
+    // =========================================
+    // FILE UPLOAD
+    // =========================================
+    $file_url = '';
+
+    if (!empty($_FILES['hyla_file']['name'])) {
+
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+
+        $uploadedfile = $_FILES['hyla_file'];
+
+        $upload_overrides = array(
+            'test_form' => false,
+        );
+
+        $movefile = wp_handle_upload($uploadedfile, $upload_overrides);
+
+        if ($movefile && !isset($movefile['error'])) {
+
+            $file_url = $movefile['url'];
+
+        } else {
+
+            wp_die($movefile['error']);
+
+        }
+    }
+
+    // =========================================
+    // EMAIL
+    // =========================================
+    $to = get_option('admin_email');
+
+    $email_subject = 'Nieuwe Contactaanvraag - ' . $full_name;
+
+    $body  = "<h2>Nieuwe HYLA Contactaanvraag</h2>";
+    $body .= "<p><strong>Voornaam:</strong> {$first_name}</p>";
+    $body .= "<p><strong>Achternaam:</strong> {$last_name}</p>";
+    $body .= "<p><strong>E-mail:</strong> {$email}</p>";
+    $body .= "<p><strong>Telefoon:</strong> {$phone}</p>";
+    $body .= "<p><strong>Postcode:</strong> {$postal}</p>";
+    $body .= "<p><strong>Onderwerp:</strong> {$subject}</p>";
+    $body .= "<p><strong>Bericht:</strong><br>" . nl2br($message) . "</p>";
+
+    if (!empty($file_url)) {
+        $body .= "<p><strong>Bestand:</strong> <a href='{$file_url}' target='_blank'>Bekijk upload</a></p>";
+    }
+
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: ' . $full_name . ' <' . $email . '>'
+    );
+
+    // =========================================
+    // SEND MAIL
+    // =========================================
+    wp_mail(
+        $to,
+        $email_subject,
+        $body,
+        $headers
+    );
+
+    // =========================================
+    // REDIRECT SUCCESS
+    // =========================================
+    wp_redirect(
+        add_query_arg(
+            'contact_success',
+            '1',
+            wp_get_referer()
+        )
+    );
+
+    exit;
 }
+
 add_action('admin_post_nopriv_hyla_contact', 'hyla_handle_contact_form');
 add_action('admin_post_hyla_contact', 'hyla_handle_contact_form');
