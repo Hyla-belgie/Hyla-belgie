@@ -1,0 +1,130 @@
+/* =========================================================
+   AIRY PARTNER CAROUSEL (Premium & Healthy Theme)
+========================================================= */
+
+.hyla-partner-section {
+    position: relative;
+    background: #FFFFFF;
+    text-align: center;
+    overflow: hidden;
+    padding: 5rem 0;
+}
+
+/* Inner content wrapper matching your 80vw setup */
+.hyla-partner-inner-content {
+    max-width: 1200px; /* Adjust to match your theme.json contentSize */
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Header Styling */
+.hyla-partner-header {
+    max-width: 600px;
+    margin: 0 auto 3.5rem auto;
+}
+
+.hyla-partner-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem) !important;
+    font-weight: 850;
+    color: #1A221A;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.hyla-partner-subtitle {
+    font-size: 1rem;
+    color: #5C645C;
+    line-height: 1.5;
+}
+
+/* Infinite Carousel Track Window */
+.hyla-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    padding: 10px 0;
+    
+    /* Soft gradient masks on the sides for an "airy" fade out appearance */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+
+.hyla-carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 2rem; /* 32px spacing between elements */
+    animation: hylaMarquee 35s linear infinite;
+}
+
+/* Pause animation on hover for a premium user experience */
+.hyla-carousel-container:hover .hyla-carousel-track {
+    animation-play-state: paused;
+}
+
+/* Premium Partner Logo Cards */
+.hyla-partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(247, 250, 247, 0.6); /* Matching your soft mint hint color */
+    border: 1px solid rgba(122, 201, 135, 0.12);
+    border-radius: 20px;
+    width: 200px;
+    height: 100px;
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
+}
+
+.hyla-partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(60%); /* Clean, unified appearance by default */
+    transition: all 0.4s ease;
+}
+
+/* Subtle Hover Effect */
+.hyla-partner-logo:hover {
+    background: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(122, 201, 135, 0.08);
+    border-color: rgba(122, 201, 134, 0.3);
+}
+
+.hyla-partner-logo:hover img {
+    filter: grayscale(0%) opacity(100%); /* Color pops back beautifully on hover */
+}
+
+/* Button Alignment */
+.hyla-partner-cta {
+    display: flex;
+    justify-content: center;
+}
+
+/* Perfect Infinite Marquee Logic */
+@keyframes hylaMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* 
+           Moves exactly 50% (the first set of 10 logos).
+           We subtract half of the gap space (1rem) so the 11th logo 
+           snaps identically onto the pixel where the 1st logo started.
+        */
+        transform: translateX(calc(-50% - 1rem)); 
+    }
+}
+
+/* Responsive Rules matching your mobile break point */
+@media (max-width: 782px) {
+    .hyla-partner-section { padding: 3.5rem 0; }
+    .hyla-partner-inner-content { padding-left: 15px; padding-right: 15px; }
+    .hyla-partner-header { margin-bottom: 2.5rem; }
+    .hyla-partner-logo { width: 160px; height: 85px; padding: 1rem; }
+}
