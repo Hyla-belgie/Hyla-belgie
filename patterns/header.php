@@ -4,43 +4,50 @@
  * Slug: hyla/header-glass
  * Categories: header
  * Block Types: core/template-part/header
+ *
  */
 ?>
 
 <!-- wp:group {"tagName":"header","align":"full","className":"hyla-header is-style-hyla-glass","layout":{"type":"constrained","contentSize":"1280px"}} -->
 <header class="wp-block-group alignfull hyla-header is-style-hyla-glass">
 
-	<!-- wp:group {"className":"hyla-header-inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
-	<div class="wp-block-group hyla-header-inner">
+    <!-- wp:group {"className":"hyla-header-inner","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center","flexWrap":"nowrap"}} -->
+    <div class="wp-block-group hyla-header-inner">
 
-		<!-- wp:site-logo {"height":100} /-->
+        <!-- wp:site-logo {"height":100} /-->
 
-		<!-- wp:navigation {"overlayMenu":"mobile","className":"hyla-navigation","layout":{"type":"flex","justifyContent":"center"}} /-->
+        <!-- wp:group {"tagName":"nav","className":"hyla-navigation-manual","layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
+        <nav class="wp-block-group hyla-navigation-manual">
+            <a href="/" class="hyla-nav-link is-active">Home</a>
+            <a href="/Prive" class="hyla-nav-link">Prive</a>
+            <a href="/Professioneel" class="hyla-nav-link">Professioneel</a>
+        </nav>
+        <!-- /wp:group -->
 
-		<!-- wp:group {"layout":{"type":"flex","verticalAlignment":"center","flexWrap":"nowrap"}} -->
-		<div class="wp-block-group">
+        <!-- wp:group {"layout":{"type":"flex","verticalAlignment":"center","flexWrap":"nowrap"}} -->
+        <div class="wp-block-group">
 
-			<!-- wp:shortcode -->
-			[hyla_language_switcher]
-			<!-- /wp:shortcode -->
+            <!-- wp:shortcode -->
+            [hyla_language_switcher]
+            <!-- /wp:shortcode -->
 
-			<!-- wp:buttons -->
-			<div class="wp-block-buttons">
-				<!-- wp:button {"className":"hyla-button-primary"} -->
-				<div class="wp-block-button hyla-button-primary">
-					<a class="wp-block-button__link wp-element-button" href="/contact">
-						Contact Us!
-					</a>
-				</div>
-				<!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
+            <!-- wp:buttons -->
+            <div class="wp-block-buttons">
+                <!-- wp:button {"className":"hyla-button-primary"} -->
+                <div class="wp-block-button hyla-button-primary">
+                    <a class="wp-block-button__link wp-element-button" href="/contact">
+                        Contact Us!
+                    </a>
+                </div>
+                <!-- /wp:button -->
+            </div>
+            <!-- /wp:buttons -->
 
-		</div>
-		<!-- /wp:group -->
+        </div>
+        <!-- /wp:group -->
 
-	</div>
-	<!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
 
 </header>
 <!-- /wp:group -->

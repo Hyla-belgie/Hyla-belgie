@@ -3,281 +3,155 @@
 ========================================================= */
 
 .hyla-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-	position: sticky;
-	top: 0;
-	z-index: 1000;
+    background: rgba(255, 255, 255, 0.72);
 
-	background:
-		rgba(255,255,255,0.72);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
 
-	backdrop-filter:
-		blur(22px)
-		saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 
-	-webkit-backdrop-filter:
-		blur(22px)
-		saturate(180%);
+    transition: 
+        background .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease,
+        transform .45s ease;
 
-	border-bottom:
-		1px solid rgba(255,255,255,0.22);
-
-	transition:
-		background .45s ease,
-		border-color .45s ease,
-		box-shadow .45s ease,
-		transform .45s ease;
-
-	isolation: isolate;
+    isolation: isolate;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Premium glow layer
-|--------------------------------------------------------------------------
-*/
-
+/* Premium glow layer */
 .hyla-header::before {
-
-	content: '';
-
-	position: absolute;
-	inset: 0;
-
-	background:
-		linear-gradient(
-			180deg,
-			rgba(255,255,255,0.55) 0%,
-			rgba(255,255,255,0.08) 100%
-		);
-
-	pointer-events: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.08) 100%);
+    pointer-events: none;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Scroll state
-|--------------------------------------------------------------------------
-*/
-
+/* Scroll state */
 .hyla-header.is-scrolled {
-
-	background:
-		rgba(255,255,255,0.88);
-
-	border-bottom:
-		1px solid rgba(255,255,255,0.4);
-
-	box-shadow:
-		0 10px 40px rgba(0,0,0,0.08),
-		0 2px 12px rgba(0,0,0,0.04);
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
-/*
-|--------------------------------------------------------------------------
-| Header height shrink
-|--------------------------------------------------------------------------
-*/
-
+/* Header height shrink */
 .hyla-header-inner {
-
-	position: relative;
-	z-index: 2;
-
-	min-height: 70px;
-
-	display: flex;
-	align-items: center;
-
-	transition:
-		min-height .35s ease,
-		padding .35s ease;
+    position: relative;
+    z-index: 2;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    transition: min-height .35s ease, padding .35s ease;
 }
 
 .hyla-header.is-scrolled .hyla-header-inner {
-
-	min-height: 56px;
+    min-height: 56px;
 }
 
-/* =========================================================
-   REMOVE EXTRA GUTENBERG SPACING
-========================================================= */
-
+/* REMOVE EXTRA GUTENBERG SPACING */
 .hyla-header * {
-	margin-top: 0;
-	margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-/* =========================================================
-   LOGO DEFAULT
-========================================================= */
-
+/* LOGO DEFAULT & SCROLL STYLES */
 .hyla-header img {
-
-	max-height: 64px;
-	max-width: 64px;
-
-	opacity: 1;
-	visibility: visible;
-
-	transition:
-		opacity .25s ease,
-		visibility .25s ease,
-		transform .25s ease,
-		max-height .35s ease;
+    max-height: 64px;
+    max-width: 64px;
+    opacity: 1;
+    visibility: visible;
+    transition: 
+        opacity .25s ease,
+        visibility .25s ease,
+        transform .25s ease,
+        max-height .35s ease;
 }
-
-/* =========================================================
-   LOGO HIDDEN ON SCROLL
-========================================================= */
 
 .hyla-header.is-scrolled img {
-
-	opacity: 0;
-	visibility: hidden;
-
-	transform: translateY(-6px);
-
-	pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
 }
 
 /* =========================================================
-   NAVIGATION
+   SCOPED MANUAL NAVIGATION (Isolated from Footer)
 ========================================================= */
 
-.hyla-navigation .wp-block-navigation__container {
-
-	gap: 1.6rem;
-
-	align-items: center;
-
-	transition: gap .35s ease;
+.hyla-navigation-manual {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    transition: gap .35s ease;
 }
 
-.hyla-header.is-scrolled
-.hyla-navigation .wp-block-navigation__container {
-
-	gap: 1.2rem;
+.hyla-header.is-scrolled .hyla-navigation-manual {
+    gap: 1.2rem;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Links
-|--------------------------------------------------------------------------
-*/
-
-.hyla-header .wp-block-navigation-item__content {
-
-	position: relative;
-
-	display: inline-flex;
-	align-items: center;
-
-	padding: .15rem 0;
-
-	text-decoration: none !important;
-
-	font-size: 14px;
-	font-weight: 600;
-	letter-spacing: 0.015em;
-
-	line-height: 1.1;
-
-	color: #0B0B0C;
-
-	transition:
-		color .3s ease,
-		transform .3s ease,
-		opacity .3s ease,
-		font-size .35s ease,
-		padding .35s ease;
+/* Navigation Links */
+.hyla-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: .15rem 0;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    line-height: 1.1;
+    color: #0B0B0C;
+    transition: 
+        color .3s ease,
+        transform .3s ease,
+        opacity .3s ease,
+        font-size .35s ease,
+        padding .35s ease;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Smaller nav links on scroll
-|--------------------------------------------------------------------------
-*/
-
-.hyla-header.is-scrolled
-.wp-block-navigation-item__content {
-
-	font-size: 13px;
-
-	padding: .08rem 0;
+/* Smaller nav links on scroll */
+.hyla-header.is-scrolled .hyla-nav-link {
+    font-size: 13px;
+    padding: .08rem 0;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Orange premium underline
-|--------------------------------------------------------------------------
-*/
-
-.hyla-header .wp-block-navigation-item__content::after {
-
-	content: '';
-
-	position: absolute;
-
-	left: 50%;
-	bottom: -5px;
-
-	transform: translateX(-50%);
-
-	width: 0%;
-	height: 2px;
-
-	border-radius: 999px;
-
-	background:
-		linear-gradient(
-			90deg,
-			#F47A1F 0%,
-			#FF9C4A 100%
-		);
-
-	box-shadow:
-		0 0 14px rgba(244,122,31,0.35);
-
-	transition:
-		width .34s cubic-bezier(.22,.61,.36,1),
-		opacity .28s ease;
+/* Orange premium underline */
+.hyla-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #F47A1F 0%, #FF9C4A 100%);
+    box-shadow: 0 0 14px rgba(244, 122, 31, 0.35);
+    transition: 
+        width .34s cubic-bezier(.22, .61, .36, 1),
+        opacity .28s ease;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Hover
-|--------------------------------------------------------------------------
-*/
-
-.hyla-header .wp-block-navigation-item__content:hover {
-
-	color: #F47A1F;
-
-	transform: translateY(-1px);
+/* Hover & Active States */
+.hyla-nav-link:hover {
+    color: #F47A1F;
+    transform: translateY(-1px);
 }
 
-.hyla-header .wp-block-navigation-item__content:hover::after {
-
-	width: 100%;
+.hyla-nav-link:hover::after,
+.hyla-nav-link.is-active::after {
+    width: 100%;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Active
-|--------------------------------------------------------------------------
-*/
-
-.hyla-header .current-menu-item > a,
-.hyla-header .current-menu-ancestor > a {
-
-	color: #F47A1F !important;
-}
-
-.hyla-header .current-menu-item > a::after,
-.hyla-header .current-menu-ancestor > a::after {
-
-	width: 100%;
+.hyla-nav-link.is-active {
+    color: #F47A1F !important;
 }
 
 /* =========================================================
@@ -285,95 +159,61 @@
 ========================================================= */
 
 .hyla-lang-switch-container ul {
-
-	display: flex;
-	align-items: center;
-	gap: .55rem;
-
-	margin: 0;
-	padding: 0;
-
-	list-style: none;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .hyla-lang-switch-container a {
-
-	position: relative;
-
-	text-decoration: none;
-
-	font-size: 13px;
-	font-weight: 700;
-
-	line-height: 1;
-
-	color: #0B0B0C;
-
-	opacity: .55;
-
-	transition:
-		opacity .25s ease,
-		color .25s ease;
+    position: relative;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: #0B0B0C;
+    opacity: .55;
+    transition: opacity .25s ease, color .25s ease;
 }
 
 .hyla-lang-switch-container a:hover {
-
-	color: #F47A1F;
-
-	opacity: 1;
+    color: #F47A1F;
+    opacity: 1;
 }
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE RESPONSIVENESS
 ========================================================= */
 
 @media (max-width: 991px) {
+    .hyla-header-inner {
+        min-height: 62px;
+    }
 
-	.hyla-header-inner {
+    .hyla-header.is-scrolled .hyla-header-inner {
+        min-height: 52px;
+    }
 
-		min-height: 62px;
-	}
+    /* Stack links cleanly on mobile devices if needed */
+    .hyla-navigation-manual {
+        gap: 1rem;
+    }
 
-	.hyla-header.is-scrolled .hyla-header-inner {
+    .hyla-nav-link {
+        font-size: 13px;
+        padding: .4rem 0;
+    }
 
-		min-height: 52px;
-	}
+    .hyla-header img {
+        max-height: 48px;
+        max-width: 48px;
+    }
 
-	.wp-block-navigation__responsive-container {
-
-		background:
-			rgba(255,255,255,0.95) !important;
-
-		backdrop-filter:
-			blur(24px);
-
-		-webkit-backdrop-filter:
-			blur(24px);
-	}
-
-	.wp-block-navigation__responsive-container-content {
-
-		padding-top: 4rem;
-	}
-
-	.wp-block-navigation__responsive-container
-	.wp-block-navigation-item__content {
-
-		font-size: 1rem;
-
-		padding: .65rem 0;
-	}
-
-	.hyla-header img {
-
-		max-height: 48px;
-		max-width: 48px;
-	}
-
-	.hyla-header.is-scrolled img {
-
-		max-height: 38px;
-	}
+    .hyla-header.is-scrolled img {
+        max-height: 38px;
+    }
 }
 
 /* =========================================================
@@ -381,7 +221,6 @@
 ========================================================= */
 
 ::selection {
-
-	background: #F47A1F;
-	color: #FFFFFF;
+    background: #F47A1F;
+    color: #FFFFFF;
 }
