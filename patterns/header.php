@@ -26,15 +26,13 @@
 
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
-
-				<!-- wp:button {"className":"hyla-button"} -->
-				<div class="wp-block-button hyla-button">
+				<!-- wp:button {"className":"hyla-button-primary"} -->
+				<div class="wp-block-button hyla-button-primary">
 					<a class="wp-block-button__link wp-element-button" href="/contact">
 						Contact Us!
 					</a>
 				</div>
 				<!-- /wp:button -->
-
 			</div>
 			<!-- /wp:buttons -->
 

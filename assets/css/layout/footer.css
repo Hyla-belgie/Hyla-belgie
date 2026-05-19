@@ -1,5 +1,5 @@
 /* =========================================================
-   PREMIUM ECO FOOTER (AIRY HEALTH STYLE)
+   PREMIUM ECO FOOTER (HORIZONTAL AIRY STYLE)
 ========================================================= */
 
 .hyla-footer {
@@ -7,7 +7,7 @@
     /* Soft eucalyptus to airy white gradient */
     background: linear-gradient(180deg, #F0F4F0 0%, #FFFFFF 100%);
     color: #3A473A; /* Deep forest green-grey for readability */
-    margin-top: 6rem;
+    margin-top: 3.5rem !important; /* Balanced entry spacing */
     overflow: hidden;
 }
 
@@ -16,10 +16,10 @@
     max-width: 1280px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding-left: 60px !important; /* Generous airy spacing */
+    padding-left: 60px !important; 
     padding-right: 60px !important;
-    padding-top: 6rem;
-    padding-bottom: 3rem;
+    padding-top: 3.5rem !important;  /* Slimmer top profile for a horizontal look */
+    padding-bottom: 2rem !important; /* Compact base spacing */
 }
 
 /* Soft Natural Glow (Healthy balance) */
@@ -40,21 +40,27 @@
     pointer-events: none;
 }
 
-/* Layout */
-.hyla-footer-top {
-    position: relative;
-    z-index: 2;
-    gap: 5rem;
+/* =========================================================
+   HORIZONTAL GRID LAYOUT (DESKTOP)
+========================================================= */
+@media (min-width: 992px) {
+    .hyla-footer-grid {
+        display: grid !important;
+        /* Brand gets more breathing room, menus/contact sit compact and clean */
+        grid-template-columns: 2fr 1fr 1fr 1.2fr; 
+        gap: 3.5rem !important; /* Wide horizontal gaps keep it airy */
+        align-items: start;
+    }
 }
 
-.hyla-footer-links {
-    gap: 4rem;
+.hyla-footer-brand-col {
+    max-width: 340px; /* Keeps the description from spanning too wide */
 }
 
 .hyla-footer-description {
-    margin-top: 1.25rem;
-    font-size: 15px;
-    line-height: 1.9;
+    margin-top: 1rem;
+    font-size: 14px;
+    line-height: 1.8;
     color: rgba(58, 71, 58, 0.7); /* Slightly muted text */
 }
 
@@ -64,13 +70,14 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1.2rem; /* Pulled closer to menus */
     color: #2D362D;
 }
 
-/* Vertical Spacing */
-.hyla-footer .wp-block-navigation { gap: 0.8rem !important; }
-.hyla-footer-contact-col { gap: 0.8rem !important; }
+/* Vertical Spacing within Columns */
+.hyla-footer .wp-block-navigation { gap: 0.7rem !important; }
+.hyla-footer-contact-col { gap: 0.7rem !important; }
 .hyla-footer-contact-col p { font-size: 14px; margin: 0; line-height: 1.6; }
 
 /* Navigation Links */
@@ -108,10 +115,10 @@
     width: 100%;
 }
 
-/* Separator */
+/* Separator Line */
 .hyla-footer-separator {
-    margin-top: 4rem;
-    margin-bottom: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
     border-color: rgba(0, 0, 0, 0.06);
 }
 
@@ -122,21 +129,40 @@
     margin: 0;
 }
 
-/* Mobile */
-@media (max-width: 991px) {
-    .hyla-footer-container { padding-left: 24px !important; padding-right: 24px !important; }
-    .hyla-footer-top { flex-direction: column; gap: 3.5rem; }
-    .hyla-footer-links { flex-direction: column; gap: 2.5rem; }
-    .hyla-footer-bottom { flex-direction: column; align-items: flex-start !important; gap: 1.5rem; }
-}
-
-/* Logo */
+/* Logo Sizing & Animation */
 .hyla-footer-logo img {
-    max-height: 80px;
-	max-width: 80px;
+    max-height: 64px;
+	max-width: 64px;
     transition: transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .hyla-footer-logo img:hover {
     transform: scale(1.03);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+========================================================= */
+@media (max-width: 991px) {
+    .hyla-footer-container { 
+        padding-left: 24px !important; 
+        padding-right: 24px !important; 
+    }
+    
+    /* Smooth stack fallback on mobile sizes */
+    .hyla-footer-grid { 
+        display: flex !important;
+        flex-direction: column; 
+        gap: 2.5rem !important; 
+    }
+    
+    .hyla-footer-brand-col {
+        max-width: 100%;
+    }
+    
+    .hyla-footer-bottom { 
+        flex-direction: column; 
+        align-items: flex-start !important; 
+        gap: 1.2rem; 
+    }
 }

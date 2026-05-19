@@ -1,0 +1,18 @@
+.hyla-product-card-v2 {
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    border: 1px solid rgba(122, 201, 135, 0.08);
+    transition: transform 0.4s ease;
+}
+
+.hyla-product-card-v2:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(122, 201, 135, 0.1);
+}
+
+.hyla-card-content {
+    padding: 2rem;
+    text-align: left;
+}

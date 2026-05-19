@@ -1,0 +1,90 @@
+.hyla-button-primary .wp-element-button,
+.hyla-button-secondary .wp-element-button,
+.hyla-form-card button[type="submit"],
+.hyla-contact-form button[type="submit"] {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100px;
+    padding: 1rem 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease, background .3s ease;
+}
+
+.hyla-button-primary .wp-element-button:hover,
+.hyla-button-secondary .wp-element-button:hover,
+.hyla-form-card button[type="submit"]:hover {
+    transform: translateY(-2px);
+}
+
+.hyla-button-primary .wp-element-button,
+.hyla-form-card button[type="submit"],
+.hyla-contact-form button[type="submit"] {
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: linear-gradient(135deg, #F47A1F 0%, #D85E07 100%);
+    box-shadow: 0 14px 34px rgba(244,122,31,0.22);
+}
+
+.hyla-button-primary .wp-element-button:hover,
+.hyla-form-card button[type="submit"]:hover,
+.hyla-contact-form button[type="submit"]:hover {
+    filter: brightness(1.04);
+    box-shadow: 0 20px 44px rgba(244,122,31,0.32);
+}
+
+.hyla-button-primary .wp-element-button::before,
+.hyla-form-card button[type="submit"]::before,
+.hyla-contact-form button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.28) 50%, transparent 80%);
+    transform: translateX(-120%);
+    transition: transform .75s ease;
+}
+
+.hyla-button-primary .wp-element-button:hover::before,
+.hyla-form-card button[type="submit"]:hover::before,
+.hyla-contact-form button[type="submit"]:hover::before {
+    transform: translateX(120%);
+}
+
+.hyla-button-secondary .wp-element-button {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: #1A221A;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Soft baseline shadow */
+}
+
+.hyla-button-secondary .wp-element-button:hover {
+    background: #f9f9f9;
+    border-color: rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.hyla-header.is-scrolled .wp-element-button {
+    transform: scale(.92);
+}
+
+.hyla-header.is-scrolled .wp-element-button:hover {
+    transform: scale(.92) translateY(-2px);
+}
+
+.hyla-form-card button[type="submit"] {
+    margin-top: 1rem;
+    border: none;
+}
+.hyla-form-card button[type="submit"]:hover {
+    transform: translateY(-3px);
+    background: #e66a15; 
+}
+
+.hyla-contact-form button[type="submit"] {
+    width: 100%;
+    padding: 1.2rem;
+    border: none;
+}

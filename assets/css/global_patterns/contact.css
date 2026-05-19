@@ -44,22 +44,6 @@
     box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.1);
 }
 
-/* The Submit Button */
-.hyla-form-card button[type="submit"] {
-    margin-top: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-align: center;
-}
-
-.hyla-form-card button[type="submit"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 122, 24, 0.3);
-    background: #e66a15; /* Slightly darker orange */
-}
-
 /* Success Message Styling */
 .hyla-success-message {
     background: #E8F5E9;
@@ -155,16 +139,7 @@
     flex-shrink: 0;
 }
 
-/* Button */
-.hyla-contact-form button[type="submit"] {
-    background: #FF7A18;
-    color: #fff;
-    width: 100%;
-    padding: 1.2rem;
-    border-radius: 100px;
-    font-weight: 700;
-    border: none;
-}
+
 
 /* Mobile */
 @media (max-width: 782px) {

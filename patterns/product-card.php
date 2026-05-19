@@ -25,8 +25,8 @@
 
         <!-- wp:buttons -->
         <div class="wp-block-buttons">
-            <!-- wp:button {"className":"hyla-button-outline"} -->
-            <div class="wp-block-button hyla-button-outline"><a class="wp-block-button__link wp-element-button" href="/multireiniger">Ontdek de het product</a></div>
+            <!-- wp:button {"className":"hyla-button-secondary"} -->
+            <div class="wp-block-button hyla-button-secondary"><a class="wp-block-button__link wp-element-button" href="/multireiniger">Ontdek de het product</a></div>
             <!-- /wp:button -->
 
             <!-- wp:button {"className":"hyla-button-primary"} -->

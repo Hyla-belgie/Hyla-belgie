@@ -7,12 +7,11 @@
     background: #FFFFFF;
     text-align: center;
     overflow: hidden;
-    padding: 5rem 0;
+    padding: 2rem 0;
 }
 
 /* Inner content wrapper matching your 80vw setup */
 .hyla-partner-inner-content {
-    max-width: 1200px; /* Adjust to match your theme.json contentSize */
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;

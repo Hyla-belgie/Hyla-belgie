@@ -18,6 +18,9 @@ Text Domain: hyla
 
 @import url('./assets/css/layout/header.css');
 @import url('./assets/css/layout/footer.css');
-@import url('./assets/css/hero.css');
-@import url('./assets/css/contact.css');
-@import url('./assets/css/carousel.css');
+@import url('./assets/css/global_patterns/carousel.css');
+@import url('./assets/css/global_patterns/contact.css');
+@import url('./assets/css/global_patterns/hero.css');
+@import url('./assets/css/buttons.css');
+@import url('./assets/css/product_card.css');
+@import url('./assets/css/solution_card.css');

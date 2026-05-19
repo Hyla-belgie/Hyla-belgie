@@ -5,6 +5,24 @@
  * Categories: featured, text
  * Description: A premium, airy infinite scrolling carousel for up to 10 partners with a link to a full list page.
  */
+
+// Dynamically get the uploads directory URL
+$upload_dir = wp_upload_dir();
+$upload_base_url = trailingslashit($upload_dir['baseurl']) . '2026/05/';
+
+// Define up to 10 partner logos mapping to your uploads folder
+$partners = [
+    ['src' => $upload_base_url . 'crelan_logo.webp', 'alt' => 'Crelan'],
+    ['src' => $upload_base_url . 'horta_logo.webp', 'alt' => 'Horta'], // Replace with actual filenames
+    ['src' => $upload_base_url . 'logo_china_garden.webp', 'alt' => 'china_garden'],
+    ['src' => $upload_base_url . 'logo_colmar.webp', 'alt' => 'logo_colmar'],
+    ['src' => $upload_base_url . 'logo_gabriels.webp', 'alt' => 'logo_gabriels'],
+    ['src' => $upload_base_url . 'logo_keurslager.webp', 'alt' => 'logo_keurslager'],
+    ['src' => $upload_base_url . 'MG_logo.webp', 'alt' => 'MG_logo'],
+    ['src' => $upload_base_url . 'logo-adv.webp', 'alt' => 'logo-adv'],
+    ['src' => $upload_base_url . 'crelan_logo.webp', 'alt' => 'Partner Name 9'],
+    ['src' => $upload_base_url . 'crelan_logo.webp', 'alt' => 'Partner Name 10'],
+];
 ?>
 
 <!-- wp:html -->
@@ -23,21 +41,6 @@
             <div class="hyla-carousel-track">
                 
                 <?php
-                // Define up to 10 partner logos
-                // Dynamic tip: replace these placeholder URLs with your actual image paths or get_theme_file_uri()
-                $partners = [
-                    ['src' => get_theme_file_uri('assets/images/logo1.svg'), 'alt' => 'Partner Name 1'],
-                    ['src' => get_theme_file_uri('assets/images/logo2.svg'), 'alt' => 'Partner Name 2'],
-                    ['src' => get_theme_file_uri('assets/images/logo3.svg'), 'alt' => 'Partner Name 3'],
-                    ['src' => get_theme_file_uri('assets/images/logo4.svg'), 'alt' => 'Partner Name 4'],
-                    ['src' => get_theme_file_uri('assets/images/logo5.svg'), 'alt' => 'Partner Name 5'],
-                    ['src' => get_theme_file_uri('assets/images/logo6.svg'), 'alt' => 'Partner Name 6'],
-                    ['src' => get_theme_file_uri('assets/images/logo7.svg'), 'alt' => 'Partner Name 7'],
-                    ['src' => get_theme_file_uri('assets/images/logo8.svg'), 'alt' => 'Partner Name 8'],
-                    ['src' => get_theme_file_uri('assets/images/logo9.svg'), 'alt' => 'Partner Name 9'],
-                    ['src' => get_theme_file_uri('assets/images/logo10.svg'), 'alt' => 'Partner Name 10'],
-                ];
-
                 // Render Original Set
                 foreach ($partners as $partner) : ?>
                     <div class="hyla-partner-logo">
@@ -58,27 +61,10 @@
 
         <!-- CTA Button Zone -->
         <div class="hyla-partner-cta">
-            <div class="wp-block-buttons hyla-button-outline">
+            <div class="wp-block-buttons hyla-button-secondary">
                 <a class="wp-element-button" href="<?php echo esc_url(home_url('/partners/')); ?>">View All Partners</a>
             </div>
         </div>
-
-        <!-- wp:group {"className":"hyla-hero-footer","layout":{"type":"constrained"}} -->
-    <div class="wp-block-group hyla-hero-footer">
-        <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-        <div class="wp-block-buttons">
-            <!-- wp:button {"className":"hyla-button-outline"} -->
-            <div class="wp-block-button hyla-button-outline"><a class="wp-block-button__link wp-element-button" href="/oplossingen">Ontdek HYLA</a></div>
-            <!-- /wp:button -->
-
-            <!-- wp:button {"className":"hyla-button-primary"} -->
-            <div class="wp-block-button hyla-button hyla-button-primary"><a class="wp-block-button__link wp-element-button" href="/contact">Vraag een gratis demo aan</a></div>
-            <!-- /wp:button -->
-        </div>
-        <!-- /wp:buttons -->
-    </div>
-    <!-- /wp:group -->
-
     </div>
 </section>
 <!-- /wp:html -->
