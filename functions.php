@@ -495,15 +495,22 @@ add_action(
 
 function hyla_enqueue_assets() {
 
-	wp_enqueue_style(
-		'hyla-style',
-		get_stylesheet_uri(),
-		array(),
-		wp_get_theme()->get( 'Version' )
-	);
+    wp_enqueue_style(
+        'hyla-style',
+        get_stylesheet_uri(),
+        array(),
+        wp_get_theme()->get( 'Version' )
+    );
+
+    // Enqueue the companion directory stylesheet cleanly
+    wp_enqueue_style( 
+        'hyla-partner-directory-css', 
+        get_theme_file_uri( 'assets/css/partner-directory.css' ), 
+        array(), 
+        '1.0.2' 
+    );
 
 }
-
 add_action( 'wp_enqueue_scripts', 'hyla_enqueue_assets' );
 
 function hyla_handle_contact_form() {
