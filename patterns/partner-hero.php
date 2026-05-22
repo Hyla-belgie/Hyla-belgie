@@ -6,22 +6,22 @@
  * Description: A grid layout of partners featuring category filtering, live search, and dynamic hover overlays.
  */
 
-// Dynamically get the uploads directory URL
 $upload_dir = wp_upload_dir();
 $upload_base_url = trailingslashit($upload_dir['baseurl']) . '2026/05/';
 
 $partners = [
-    ['src' => $upload_base_url . 'crelan_logo.webp', 'alt' => 'Crelan', 'category' => 'finance', 'name' => 'Crelan'],
-    ['src' => $upload_base_url . 'horta_logo.webp', 'alt' => 'Horta', 'category' => 'retail', 'name' => 'Horta'], 
-    ['src' => $upload_base_url . 'logo_china_garden.webp', 'alt' => 'China Garden', 'category' => 'food', 'name' => 'China Garden'],
-    ['src' => $upload_base_url . 'logo_colmar.webp', 'alt' => 'Colmar', 'category' => 'food', 'name' => 'Colmar'],
-    ['src' => $upload_base_url . 'logo_gabriels.webp', 'alt' => 'Gabriels', 'category' => 'retail', 'name' => 'Gabriels'],
-    ['src' => $upload_base_url . 'logo_keurslager.webp', 'alt' => 'Keurslager', 'category' => 'food', 'name' => 'Keurslager'],
-    ['src' => $upload_base_url . 'MG_logo.webp', 'alt' => 'MG Group', 'category' => 'finance', 'name' => 'MG Group'],
-    ['src' => $upload_base_url . 'logo-adv.webp', 'alt' => 'ADV', 'category' => 'other', 'name' => 'ADV Logistics'],
+    ['src' => $upload_base_url . 'crelan_logo.webp', 'alt' => 'Crelan', 'province' => 'oost-vlaanderen', 'region' => 'vlaanderen', 'name' => 'Crelan'],
+    ['src' => $upload_base_url . 'horta_logo.webp', 'alt' => 'Horta', 'province' => 'antwerpen', 'region' => 'vlaanderen', 'name' => 'Horta'], 
+    ['src' => $upload_base_url . 'logo_china_garden.webp', 'alt' => 'China Garden', 'province' => 'brussel', 'region' => 'brussel', 'name' => 'China Garden'],
+    ['src' => $upload_base_url . 'logo_colmar.webp', 'alt' => 'Colmar', 'province' => 'vlaams-brabant', 'region' => 'vlaanderen', 'name' => 'Colmar'],
+    ['src' => $upload_base_url . 'logo_gabriels.webp', 'alt' => 'Gabriels', 'province' => 'west-vlaanderen', 'region' => 'vlaanderen', 'name' => 'Gabriels'],
+    ['src' => $upload_base_url . 'logo_keurslager.webp', 'alt' => 'Keurslager', 'province' => 'limburg', 'region' => 'vlaanderen', 'name' => 'Keurslager'],
+    ['src' => $upload_base_url . 'MG_logo.webp', 'alt' => 'MG Group', 'province' => 'luik', 'region' => 'wallonie', 'name' => 'MG Group'],
+    ['src' => $upload_base_url . 'logo-adv.webp', 'alt' => 'ADV', 'province' => 'henegouwen', 'region' => 'wallonie', 'name' => 'ADV Logistics'],
 ];
 
-$categories = array_unique(array_column($partners, 'category'));
+$provinces = array_unique(array_column($partners, 'province'));
+$regions = array_unique(array_column($partners, 'region'));
 ?>
 
 <!-- wp:html -->
@@ -29,21 +29,32 @@ $categories = array_unique(array_column($partners, 'category'));
     <div class="hyla-partner-inner-content">
         
         <div class="hyla-partner-header">
-            <span class="hyla-eyebrow">OUR NETWORK</span>
-            <h2 class="hyla-partner-title">Our Ecosystem of Trusted Collaborators</h2>
-            <p class="hyla-partner-subtitle">Filter or search through our extensive network of certified partners across all sectors.</p>
+            <span class="hyla-eyebrow">ONS NETWERK</span>
+            <h2 class="hyla-partner-title">Ons ecosysteem van betrouwbare partners</h2>
+            <p class="hyla-partner-subtitle">Filter of zoek door ons uitgebreide netwerk van gecertificeerde partners verspreid over alle provincies en gewesten.</p>
         </div>
 
         <div class="hyla-filter-controls">
             <div class="hyla-search-wrapper">
-                <input type="text" id="hyla-partner-search" placeholder="Search partners by name..." aria-label="Search partners" />
+                <input type="text" id="hyla-partner-search" placeholder="Zoek partners op naam..." aria-label="Zoek partners" />
             </div>
             
-            <div class="hyla-filter-tabs">
-                <button class="hyla-filter-btn active" data-filter="all">All Sectors</button>
-                <?php foreach ($categories as $cat) : ?>
-                    <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($cat); ?>">
-                        <?php echo esc_html(ucfirst($cat)); ?>
+            <div class="hyla-filter-tabs" data-filter-group="region">
+                <span class="hyla-filter-label">Gewest:</span>
+                <button class="hyla-filter-btn active" data-filter="all">Alle Gewesten</button>
+                <?php foreach ($regions as $reg) : ?>
+                    <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($reg); ?>">
+                        <?php echo esc_html(ucfirst($reg)); ?>
+                    </button>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="hyla-filter-tabs" data-filter-group="province">
+                <span class="hyla-filter-label">Provincie:</span>
+                <button class="hyla-filter-btn active" data-filter="all">Alle Provincies</button>
+                <?php foreach ($provinces as $prov) : ?>
+                    <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($prov); ?>">
+                        <?php echo esc_html(ucfirst(str_replace('-', ' ', $prov))); ?>
                     </button>
                 <?php endforeach; ?>
             </div>
@@ -52,7 +63,8 @@ $categories = array_unique(array_column($partners, 'category'));
         <div class="hyla-grid-container">
             <?php foreach ($partners as $partner) : ?>
                 <div class="hyla-grid-card" 
-                     data-category="<?php echo esc_attr($partner['category']); ?>" 
+                     data-province="<?php echo esc_attr($partner['province']); ?>" 
+                     data-region="<?php echo esc_attr($partner['region']); ?>" 
                      data-name="<?php echo esc_attr(strtolower($partner['name'])); ?>">
                     
                     <div class="hyla-grid-card-inner">
@@ -62,7 +74,8 @@ $categories = array_unique(array_column($partners, 'category'));
                         
                         <div class="hyla-grid-hover-overlay">
                             <h3 class="hyla-hover-name"><?php echo esc_html($partner['name']); ?></h3>
-                            <span class="hyla-hover-tag"><?php echo esc_html(ucfirst($partner['category'])); ?></span>
+                            <span class="hyla-hover-tag"><?php echo esc_html(ucfirst(str_replace('-', ' ', $partner['province']))); ?></span>
+                            <span class="hyla-hover-subtag"><?php echo esc_html(ucfirst($partner['region'])); ?></span>
                         </div>
                     </div>
 
@@ -76,7 +89,6 @@ $categories = array_unique(array_column($partners, 'category'));
 <script>
 (function() {
     function initHylaFilter() {
-        // Target the parent element directly for event delegation
         const mainSection = document.querySelector('.hyla-partner-grid-section');
         if (!mainSection) return;
 
@@ -87,19 +99,27 @@ $categories = array_unique(array_column($partners, 'category'));
             if (!searchInput) return;
             
             const queryValue = searchInput.value.trim().toLowerCase();
-            const activeTab = mainSection.querySelector('.hyla-filter-btn.active');
-            if (!activeTab) return;
             
-            const targetedCategory = activeTab.getAttribute('data-filter');
+            // Get active filter values from both groups
+            const activeRegionTab = mainSection.querySelector('[data-filter-group="region"] .hyla-filter-btn.active');
+            const activeProvinceTab = mainSection.querySelector('[data-filter-group="province"] .hyla-filter-btn.active');
+            
+            if (!activeRegionTab || !activeProvinceTab) return;
+            
+            const targetedRegion = activeRegionTab.getAttribute('data-filter');
+            const targetedProvince = activeProvinceTab.getAttribute('data-filter');
 
             gridCards.forEach(card => {
                 const partnerName = card.getAttribute('data-name') || '';
-                const partnerCat = card.getAttribute('data-category') || '';
+                const partnerProv = card.getAttribute('data-province') || '';
+                const partnerReg = card.getAttribute('data-region') || '';
 
                 const isMatchQuery = partnerName.indexOf(queryValue) !== -1;
-                const isMatchCategory = (targetedCategory === 'all' || partnerCat === targetedCategory);
+                const isMatchRegion = (targetedRegion === 'all' || partnerReg === targetedRegion);
+                const isMatchProvince = (targetedProvince === 'all' || partnerProv === targetedProvince);
 
-                if (isMatchQuery && isMatchCategory) {
+                // Show only if it matches search query AND chosen region AND chosen province
+                if (isMatchQuery && isMatchRegion && isMatchProvince) {
                     card.removeAttribute('style'); 
                 } else {
                     card.style.setProperty('display', 'none', 'important');
@@ -107,39 +127,38 @@ $categories = array_unique(array_column($partners, 'category'));
             });
         }
 
-        // 1. EVENT DELEGATION FOR BUTTONS: Listen to the whole section
-        mainSection.addEventListener('click', function(e) {
-            // Check if what was clicked (or its parent) is a filter button
-            const btn = e.target.closest('.hyla-filter-btn');
-            if (!btn) return; 
+        // EVENT DELEGATION FOR BUTTONS: Scoped cleanly within individual filter groups
+        mainSection.querySelectorAll('.hyla-filter-tabs').forEach(group => {
+            group.addEventListener('click', function(e) {
+                const btn = e.target.closest('.hyla-filter-btn');
+                if (!btn) return; 
 
-            e.preventDefault();
-            
-            // Clear active classes safely from buttons inside this specific section
-            mainSection.querySelectorAll('.hyla-filter-btn').forEach(b => b.classList.remove('active'));
-            
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            // Trigger filter update
-            processFilters();
+                e.preventDefault();
+                
+                // Clear active classes only within this specific group container
+                group.querySelectorAll('.hyla-filter-btn').forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Trigger filter update
+                processFilters();
+            });
         });
 
-        // 2. SEARCH INPUT LISTENER
+        // SEARCH INPUT LISTENER
         if (searchInput) {
             searchInput.removeEventListener('input', processFilters);
             searchInput.addEventListener('input', processFilters);
         }
     }
 
-    // Force initialization across all loading states (ready, interactive, delayed)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initHylaFilter);
     } else {
         initHylaFilter();
     }
     
-    // Safety fallback: if your theme uses deferred blocks or AJAX, run it one more time on window load
     window.addEventListener('load', initHylaFilter);
 })();
 </script>

@@ -6,6 +6,9 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    
+    /* Ensure the structural parent frame starts with a matching footprint */
+    min-height: 70px; 
 
     background: rgba(255, 255, 255, 0.72);
 
@@ -14,11 +17,14 @@
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 
+    /* FIX: Added min-height & height tracking transitions here so the background glow collapses smoothly */
     transition: 
         background .45s ease,
         border-color .45s ease,
         box-shadow .45s ease,
-        transform .45s ease;
+        transform .45s ease,
+        min-height .35s ease,
+        height .35s ease;
 
     isolation: isolate;
 }
@@ -34,6 +40,10 @@
 
 /* Scroll state */
 .hyla-header.is-scrolled {
+    /* FIX: Forcefully clamp down the main container height footprint so the pseudo-glow obeys inset: 0 */
+    min-height: 56px !important; 
+    height: 56px;
+
     background: rgba(255, 255, 255, 0.88);
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 
@@ -74,11 +84,21 @@
         max-height .35s ease;
 }
 
-.hyla-header.is-scrolled img {
-    opacity: 0;
-    visibility: hidden;
+/* FIXED LOGO CLAMP: Targets the actual image element AND its WordPress block wrappers */
+.hyla-header.is-scrolled img,
+.hyla-header.is-scrolled .wp-block-site-logo,
+.hyla-header.is-scrolled .wp-block-site-logo a {
+    opacity: 0 !important;
+    visibility: hidden !important;
     transform: translateY(-6px);
     pointer-events: none;
+
+    height: 0px !important;
+    max-height: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 /* =========================================================
@@ -155,6 +175,31 @@
 }
 
 /* =========================================================
+   BUTTON SHRINK ON SCROLL
+========================================================= */
+
+/* Smooth scaling transition for button structure */
+.hyla-header .wp-block-button__link {
+    transition: padding .35s ease, font-size .35s ease, min-height .35s ease !important;
+}
+
+/* Shrink the button's internal padding and font-size on scroll */
+.hyla-header.is-scrolled .wp-block-button__link {
+    padding: 6px 16px !important; 
+    font-size: 12px !important;    
+    min-height: unset !important;  
+}
+
+/* Eliminate layout block minimum sizes on the parent button container */
+.hyla-header.is-scrolled .wp-block-buttons,
+.hyla-header.is-scrolled .wp-block-button {
+    height: auto !important;
+    min-height: unset !important;
+    margin: 0 !important;
+}
+
+
+/* =========================================================
    LANGUAGE SWITCHER
 ========================================================= */
 
@@ -188,6 +233,15 @@
 ========================================================= */
 
 @media (max-width: 991px) {
+    .hyla-header {
+        min-height: 62px;
+    }
+    
+    .hyla-header.is-scrolled {
+        min-height: 52px !important;
+        height: 52px;
+    }
+
     .hyla-header-inner {
         min-height: 62px;
     }
@@ -211,8 +265,14 @@
         max-width: 48px;
     }
 
-    .hyla-header.is-scrolled img {
-        max-height: 38px;
+    .hyla-header.is-scrolled img,
+    .hyla-header.is-scrolled .wp-block-site-logo,
+    .hyla-header.is-scrolled .wp-block-site-logo a {
+        max-height: 0px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 }
 

@@ -8,6 +8,8 @@
  */
 ?>
 
+<div id="hyla-scroll-trigger" style="position: absolute; top: 0; left: 0; height: 1px; width: 1px; pointer-events: none; visibility: hidden;"></div>
+
 <!-- wp:group {"tagName":"header","align":"full","className":"hyla-header is-style-hyla-glass","layout":{"type":"constrained","contentSize":"1280px"}} -->
 <header class="wp-block-group alignfull hyla-header is-style-hyla-glass">
 
@@ -18,7 +20,7 @@
 
         <!-- wp:group {"tagName":"nav","className":"hyla-navigation-manual","layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
         <nav class="wp-block-group hyla-navigation-manual">
-            <a href="/" class="hyla-nav-link is-active">Home</a>
+            <a href="/home" class="hyla-nav-link is-active">Home</a>
             <a href="/Prive" class="hyla-nav-link">Prive</a>
             <a href="/Professioneel" class="hyla-nav-link">Professioneel</a>
         </nav>
@@ -51,3 +53,44 @@
 
 </header>
 <!-- /wp:group -->
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.hyla-header');
+    const trigger = document.querySelector('#hyla-scroll-trigger');
+
+    // --- Dynamic Active Link Logic ---
+    const currentPath = window.location.pathname.toLowerCase().replace(/\/$/, ""); // Gets current path and strips trailing slash
+    const navLinks = document.querySelectorAll('.hyla-nav-link');
+
+    navLinks.forEach(link => {
+        // Strip out the hardcoded default active class first
+        link.classList.remove('is-active'); 
+        
+        const linkPath = new URL(link.href, window.location.origin).pathname.toLowerCase().replace(/\/$/, "");
+        
+        // Match the path or default back to home if path is empty
+        if (currentPath === linkPath || (currentPath === "" && linkPath === "/home")) {
+            link.classList.add('is-active');
+        }
+    });
+    // ---------------------------------
+
+    if (header && trigger) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    header.classList.add('is-scrolled');
+                } else {
+                    header.classList.remove('is-scrolled');
+                }
+            });
+        }, { 
+            root: null,
+            threshold: 0 
+        });
+
+        observer.observe(trigger);
+    }
+});
+</script>
