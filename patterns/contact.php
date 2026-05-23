@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: HYLA Native Contact Form
- * Slug: hyla/native-contact
+ * Title: HYLA Contact Form
+ * Slug: hyla/contact
  * Categories: featured
  */
 ?>

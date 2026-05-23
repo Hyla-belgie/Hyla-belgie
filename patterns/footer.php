@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: HYLA Premium Horizontal Footer
- * Slug: hyla/footer-premium-horizontal
+ * Title: HYLA  Footer
+ * Slug: hyla/footer
  * Categories: footer
  * Block Types: core/template-part/footer
  */

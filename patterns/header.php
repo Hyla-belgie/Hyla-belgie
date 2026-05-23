@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: HYLA Glass Header
+ * Title: HYLA Header
  * Slug: hyla/header-glass
  * Categories: header
  * Block Types: core/template-part/header

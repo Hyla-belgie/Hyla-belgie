@@ -1,15 +1,15 @@
 <?php
 /**
- * Title: Airy Partner Directory with Filter
- * Slug: hyla/partner-directory-filter
+ * Title: Klanten Directory with Filter
+ * Slug: hyla/klanten-directory
  * Categories: featured, text
- * Description: A grid layout of partners featuring category filtering, live search, and dynamic hover overlays.
+ * Description: A grid layout of klanten featuring category filtering, live search, and dynamic hover overlays.
  */
 
 $upload_dir = wp_upload_dir();
 $upload_base_url = trailingslashit($upload_dir['baseurl']) . '2026/05/';
 
-$partners = [
+$klanten = [
     ['src' => $upload_base_url . 'crelan_logo.webp', 'alt' => 'Crelan', 'province' => 'oost-vlaanderen', 'region' => 'vlaanderen', 'name' => 'Crelan'],
     ['src' => $upload_base_url . 'horta_logo.webp', 'alt' => 'Horta', 'province' => 'antwerpen', 'region' => 'vlaanderen', 'name' => 'Horta'], 
     ['src' => $upload_base_url . 'logo_china_garden.webp', 'alt' => 'China Garden', 'province' => 'brussel', 'region' => 'brussel', 'name' => 'China Garden'],
@@ -20,23 +20,23 @@ $partners = [
     ['src' => $upload_base_url . 'logo-adv.webp', 'alt' => 'ADV', 'province' => 'henegouwen', 'region' => 'wallonie', 'name' => 'ADV Logistics'],
 ];
 
-$provinces = array_unique(array_column($partners, 'province'));
-$regions = array_unique(array_column($partners, 'region'));
+$provinces = array_unique(array_column($klanten, 'province'));
+$regions = array_unique(array_column($klanten, 'region'));
 ?>
 
 <!-- wp:html -->
-<section class="hyla-partner-grid-section">
-    <div class="hyla-partner-inner-content">
+<section class="hyla-klanten-grid-section">
+    <div class="hyla-klanten-inner-content">
         
-        <div class="hyla-partner-header">
+        <div class="hyla-klanten-header">
             <span class="hyla-eyebrow">ONS NETWERK</span>
-            <h2 class="hyla-partner-title">Ons ecosysteem van betrouwbare partners</h2>
-            <p class="hyla-partner-subtitle">Filter of zoek door ons uitgebreide netwerk van gecertificeerde partners verspreid over alle provincies en gewesten.</p>
+            <h2 class="hyla-klanten-title">Ons ecosysteem van betrouwbare klanten</h2>
+            <p class="hyla-klanten-subtitle">Filter of zoek door ons uitgebreide netwerk van gecertificeerde klanten verspreid over alle provincies en gewesten.</p>
         </div>
 
         <div class="hyla-filter-controls">
             <div class="hyla-search-wrapper">
-                <input type="text" id="hyla-partner-search" placeholder="Zoek partners op naam..." aria-label="Zoek partners" />
+                <input type="text" id="hyla-klanten-search" placeholder="Zoek klanten op naam..." aria-label="Zoek klanten" />
             </div>
             
             <div class="hyla-filter-tabs" data-filter-group="region">
@@ -61,21 +61,21 @@ $regions = array_unique(array_column($partners, 'region'));
         </div>
 
         <div class="hyla-grid-container">
-            <?php foreach ($partners as $partner) : ?>
+            <?php foreach ($klanten as $klant) : ?>
                 <div class="hyla-grid-card" 
-                     data-province="<?php echo esc_attr($partner['province']); ?>" 
-                     data-region="<?php echo esc_attr($partner['region']); ?>" 
-                     data-name="<?php echo esc_attr(strtolower($partner['name'])); ?>">
+                     data-province="<?php echo esc_attr($klant['province']); ?>" 
+                     data-region="<?php echo esc_attr($klant['region']); ?>" 
+                     data-name="<?php echo esc_attr(strtolower($klant['name'])); ?>">
                     
                     <div class="hyla-grid-card-inner">
                         <div class="hyla-grid-logo-box">
-                            <img src="<?php echo esc_url($partner['src']); ?>" alt="<?php echo esc_attr($partner['alt']); ?>" loading="lazy" />
+                            <img src="<?php echo esc_url($klant['src']); ?>" alt="<?php echo esc_attr($klant['alt']); ?>" loading="lazy" />
                         </div>
                         
                         <div class="hyla-grid-hover-overlay">
-                            <h3 class="hyla-hover-name"><?php echo esc_html($partner['name']); ?></h3>
-                            <span class="hyla-hover-tag"><?php echo esc_html(ucfirst(str_replace('-', ' ', $partner['province']))); ?></span>
-                            <span class="hyla-hover-subtag"><?php echo esc_html(ucfirst($partner['region'])); ?></span>
+                            <h3 class="hyla-hover-name"><?php echo esc_html($klant['name']); ?></h3>
+                            <span class="hyla-hover-tag"><?php echo esc_html(ucfirst(str_replace('-', ' ', $klant['province']))); ?></span>
+                            <span class="hyla-hover-subtag"><?php echo esc_html(ucfirst($klant['region'])); ?></span>
                         </div>
                     </div>
 
@@ -89,10 +89,10 @@ $regions = array_unique(array_column($partners, 'region'));
 <script>
 (function() {
     function initHylaFilter() {
-        const mainSection = document.querySelector('.hyla-partner-grid-section');
+        const mainSection = document.querySelector('.hyla-klanten-grid-section');
         if (!mainSection) return;
 
-        const searchInput = mainSection.querySelector('#hyla-partner-search');
+        const searchInput = mainSection.querySelector('#hyla-klanten-search');
         const gridCards = mainSection.querySelectorAll('.hyla-grid-card');
 
         function processFilters() {
@@ -110,13 +110,13 @@ $regions = array_unique(array_column($partners, 'region'));
             const targetedProvince = activeProvinceTab.getAttribute('data-filter');
 
             gridCards.forEach(card => {
-                const partnerName = card.getAttribute('data-name') || '';
-                const partnerProv = card.getAttribute('data-province') || '';
-                const partnerReg = card.getAttribute('data-region') || '';
+                const klantName = card.getAttribute('data-name') || '';
+                const klantProv = card.getAttribute('data-province') || '';
+                const klantReg = card.getAttribute('data-region') || '';
 
-                const isMatchQuery = partnerName.indexOf(queryValue) !== -1;
-                const isMatchRegion = (targetedRegion === 'all' || partnerReg === targetedRegion);
-                const isMatchProvince = (targetedProvince === 'all' || partnerProv === targetedProvince);
+                const isMatchQuery = klantName.indexOf(queryValue) !== -1;
+                const isMatchRegion = (targetedRegion === 'all' || klantReg === targetedRegion);
+                const isMatchProvince = (targetedProvince === 'all' || klantProv === targetedProvince);
 
                 // Show only if it matches search query AND chosen region AND chosen province
                 if (isMatchQuery && isMatchRegion && isMatchProvince) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Airy Partner Carousel
+ * Title: Partner Carousel
  * Slug: hyla/partner-carousel
  * Categories: featured, text
  * Description: A premium, airy infinite scrolling carousel for up to 10 partners with a link to a full list page.
