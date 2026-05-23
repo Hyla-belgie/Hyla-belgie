@@ -39,12 +39,26 @@
     line-height: 1.5;
 }
 
+/* Group container to separate the two rows */
+.hyla-carousel-group {
+    margin-bottom: 3.5rem;
+}
+
+/* Clean, premium subheadings for the categories */
+.hyla-carousel-subheading {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8C948C;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
 /* Infinite Carousel Track Window */
 .hyla-carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-bottom: 3.5rem;
     padding: 10px 0;
     
     /* Soft gradient masks on the sides for an "airy" fade out appearance */
@@ -57,6 +71,11 @@
     width: max-content;
     gap: 2rem; /* 32px spacing between elements */
     animation: hylaMarquee 35s linear infinite;
+}
+
+/* Reverse track utility - perfect for the second carousel row */
+.hyla-carousel-track.track-reverse {
+    animation: hylaMarqueeReverse 35s linear infinite;
 }
 
 /* Pause animation on hover for a premium user experience */
@@ -103,20 +122,27 @@
 .hyla-partner-cta {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
-/* Perfect Infinite Marquee Logic */
+/* Perfect Infinite Marquee Logic - Left to Right */
 @keyframes hylaMarquee {
     0% {
         transform: translateX(0);
     }
     100% {
-        /* 
-           Moves exactly 50% (the first set of 10 logos).
-           We subtract half of the gap space (1rem) so the 11th logo 
-           snaps identically onto the pixel where the 1st logo started.
-        */
+        /* Moves exactly 50%. We subtract half of the gap space (1rem) so the 11th logo snaps identically */
         transform: translateX(calc(-50% - 1rem)); 
+    }
+}
+
+/* Perfect Infinite Marquee Logic - Right to Left (Reverse) */
+@keyframes hylaMarqueeReverse {
+    0% {
+        transform: translateX(calc(-50% - 1rem));
+    }
+    100% {
+        transform: translateX(0);
     }
 }
 
@@ -125,5 +151,7 @@
     .hyla-partner-section { padding: 3.5rem 0; }
     .hyla-partner-inner-content { padding-left: 15px; padding-right: 15px; }
     .hyla-partner-header { margin-bottom: 2.5rem; }
+    .hyla-carousel-group { margin-bottom: 2.5rem; }
+    .hyla-carousel-subheading { font-size: 0.95rem; margin-bottom: 1rem; }
     .hyla-partner-logo { width: 160px; height: 85px; padding: 1rem; }
 }

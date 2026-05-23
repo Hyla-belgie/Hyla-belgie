@@ -67,8 +67,7 @@ $goede_doelen = [
         <div class="hyla-carousel-group">
             <h3 class="hyla-carousel-subheading">Goede Doelen</h3>
             <div class="hyla-carousel-container">
-                <div class="hyla-carousel-track">
-                    
+                <div class="hyla-carousel-track track-reverse">                    
                     <?php
                     // Render Original Set
                     foreach ($goede_doelen as $doel) : ?>
