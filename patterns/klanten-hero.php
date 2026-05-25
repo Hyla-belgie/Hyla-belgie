@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Klanten Directory with Filter
+ * Title:  Klanten Directory with Filter
  * Slug: hyla/klanten-directory
  * Categories: featured, text
  * Description: A grid layout of klanten featuring category filtering, live search, and dynamic hover overlays.
@@ -35,28 +35,33 @@ $regions = array_unique(array_column($klanten, 'region'));
         </div>
 
         <div class="hyla-filter-controls">
-            <div class="hyla-search-wrapper">
-                <input type="text" id="hyla-klanten-search" placeholder="Zoek klanten op naam..." aria-label="Zoek klanten" />
-            </div>
-            
-            <div class="hyla-filter-tabs" data-filter-group="region">
-                <span class="hyla-filter-label">Gewest:</span>
-                <button class="hyla-filter-btn active" data-filter="all">Alle Gewesten</button>
-                <?php foreach ($regions as $reg) : ?>
-                    <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($reg); ?>">
-                        <?php echo esc_html(ucfirst($reg)); ?>
-                    </button>
-                <?php endforeach; ?>
+            <div class="hyla-filter-row hyla-filter-top-row">
+                <div class="hyla-search-wrapper">
+                    <input type="text" id="hyla-klanten-search" placeholder="Zoek klanten op naam..." aria-label="Zoek klanten" />
+                </div>
+                
+                <div class="hyla-filter-tabs" data-filter-group="region">
+                    <span class="hyla-filter-label">Gewest:</span>
+                    <button class="hyla-filter-btn active" data-filter="all">Alle Gewesten</button>
+                    <?php foreach ($regions as $reg) : ?>
+                        <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($reg); ?>">
+                            <?php echo esc_html(ucfirst($reg)); ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
-            <div class="hyla-filter-tabs" data-filter-group="province">
-                <span class="hyla-filter-label">Provincie:</span>
-                <button class="hyla-filter-btn active" data-filter="all">Alle Provincies</button>
-                <?php foreach ($provinces as $prov) : ?>
-                    <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($prov); ?>">
-                        <?php echo esc_html(ucfirst(str_replace('-', ' ', $prov))); ?>
-                    </button>
-                <?php endforeach; ?>
+
+            <div class="hyla-filter-row hyla-filter-bottom-row">
+                <div class="hyla-filter-tabs" data-filter-group="province">
+                    <span class="hyla-filter-label">Provincie:</span>
+                    <button class="hyla-filter-btn active" data-filter="all">Alle Provincies</button>
+                    <?php foreach ($provinces as $prov) : ?>
+                        <button class="hyla-filter-btn" data-filter="<?php echo esc_attr($prov); ?>">
+                            <?php echo esc_html(ucfirst(str_replace('-', ' ', $prov))); ?>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
 
