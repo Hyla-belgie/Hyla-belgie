@@ -34,9 +34,9 @@ $goede_doelen = [
     <div class="hyla-partner-inner-content">
         
         <div class="hyla-partner-header">
-            <span class="hyla-eyebrow">OUR NETWORK</span>
-            <h2 class="hyla-partner-title">Trusted by Health & Wellness Leaders</h2>
-            <p class="hyla-partner-subtitle">We collaborate with forward-thinking partners dedicated to cleaner, breathable spaces.</p>
+            <span class="hyla-eyebrow">ONS NETWERK</span>
+            <h2 class="hyla-partner-title">Vertrouwd door gezondheids leiders</h2>
+            <p class="hyla-partner-subtitle">Wij werken samen met bedrijven waar propere, gezonde lucht vooraan staat.</p>
         </div>
 
         <div class="hyla-carousel-group">
@@ -90,7 +90,7 @@ $goede_doelen = [
 
         <div class="hyla-partner-cta">
             <div class="wp-block-buttons hyla-button-secondary">
-                <a class="wp-element-button" href="<?php echo esc_url(home_url('/klanten/')); ?>">Bekijk Onze Klanten</a>
+                <a class="wp-element-button" href="<?php echo esc_url(home_url('/partners/')); ?>">Bekijk Onze Klanten</a>
             </div>
         </div>
         
