@@ -1,0 +1,173 @@
+/* ==========================================================================
+   HYLA Global Product Showcase - Integrated Stylesheet
+   ========================================================================== */
+
+/* Outer Shell */
+.hyla-product-showcase-wrapper {
+    padding-bottom: 5rem;
+    background: #FFFFFF;
+}
+
+/* 1. HERO HEADER SPECIFICS */
+.hyla-showcase-hero {
+    position: relative;
+    background: linear-gradient(180deg, #F7FAF7 0%, #FFFFFF 100%);
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+    margin-top: 0 !important;
+}
+
+.hyla-showcase-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(122, 201, 135, 0.1) 0%, transparent 75%);
+    pointer-events: none;
+}
+
+.hyla-hero-inner-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.hyla-hero-intro-text {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: #4A544C;
+    line-height: 1.6;
+    margin-top: 1.5rem !important;
+    font-weight: 400;
+}
+
+/* Reusable brand elements inherited from Guideline */
+.hyla-eyebrow {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(91, 168, 104, 0.1);
+    color: #4A8C54;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.hyla-hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+    font-weight: 850;
+    color: #1A221A;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+
+/* 2. PRODUCT CARDS & GRID ALIGNMENTS */
+.hyla-showcase-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 20px 0 20px;
+}
+
+.hyla-product-split-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(26, 34, 26, 0.04);
+    padding: 3.5rem !important;
+    margin-top: 4rem !important;
+    margin-bottom: 4rem !important;
+    gap: 4rem !important;
+    border: 1px solid rgba(122, 201, 135, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hyla-product-split-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(91, 168, 104, 0.07);
+}
+
+.hyla-product-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem) !important;
+    font-weight: 850;
+    color: #1A221A;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-top: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+}
+
+.hyla-product-description {
+    color: #4A544C;
+    line-height: 1.65;
+    font-size: 1.08rem;
+    margin-bottom: 2.25rem !important;
+}
+
+.hyla-product-inner-content {
+    padding: 10px 0;
+}
+
+/* Perfect Containment for Products */
+.hyla-product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
+    max-height: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* 3. MOBILE & TABLET MEDIA QUERIES */
+@media (max-width: 991px) {
+    .hyla-product-split-card {
+        gap: 2.5rem !important;
+        padding: 2.5rem !important;
+    }
+}
+
+@media (max-width: 782px) {
+    .hyla-showcase-hero { 
+        padding-top: 3rem; 
+        padding-bottom: 2.5rem;
+    }
+    
+    .hyla-hero-inner-content { 
+        padding-left: 15px; 
+        padding-right: 15px; 
+    }
+
+    .hyla-product-split-card {
+        padding: 2rem 1.5rem !important;
+        margin-top: 3rem !important;
+        margin-bottom: 3rem !important;
+        gap: 2rem !important;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    /* Force the visual hierarchy: Image Top, Content Bottom */
+    .hyla-product-split-card .hyla-product-content-col {
+        order: 2;
+        width: 100% !important;
+        flex-basis: 100% !important;
+    }
+    .hyla-product-split-card .hyla-product-media-col {
+        order: 1;
+        width: 100% !important;
+        flex-basis: 100% !important;
+    }
+
+    .hyla-product-inner-content {
+        padding: 0;
+        text-align: left;
+    }
+}
