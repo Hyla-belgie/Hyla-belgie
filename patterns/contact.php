@@ -13,7 +13,6 @@
         <div class="wp-block-columns are-vertically-aligned-center hyla-contact-grid">
             
             <div class="wp-block-column" style="flex-basis:40%">
-                <p class="hyla-eyebrow">Contact</p>
                 <h2 class="hyla-hero-title">Vraag een gratis demo aan</h2>
                 <p class="hyla-contact-intro">Ontdek de kracht van HYLA in uw eigen woning. Vul het formulier in en wij nemen binnen 24 uur contact met u op.</p>
             </div>

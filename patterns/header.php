@@ -21,8 +21,8 @@
         <!-- wp:group {"tagName":"nav","className":"hyla-navigation-manual","layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
         <nav class="wp-block-group hyla-navigation-manual">
             <a href="/home" class="hyla-nav-link is-active">Home</a>
-            <a href="/Prive" class="hyla-nav-link">Prive</a>
-            <a href="/Professioneel" class="hyla-nav-link">Professioneel</a>
+            <a href="/products" class="hyla-nav-link">Producten</a>
+            <a href="/partners" class="hyla-nav-link">Klanten</a>
         </nav>
         <!-- /wp:group -->
 
@@ -38,7 +38,7 @@
                 <!-- wp:button {"className":"hyla-button-primary"} -->
                 <div class="wp-block-button hyla-button-primary">
                     <a class="wp-block-button__link wp-element-button" href="/contact">
-                        Contact Us!
+                        Boek Nu!
                     </a>
                 </div>
                 <!-- /wp:button -->

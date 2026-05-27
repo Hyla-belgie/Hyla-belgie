@@ -29,7 +29,6 @@ $regions = array_unique(array_column($klanten, 'region'));
     <div class="hyla-klanten-inner-content">
         
         <div class="hyla-klanten-header">
-            <span class="hyla-eyebrow">ONS NETWERK</span>
             <h2 class="hyla-klanten-title">Ons ecosysteem van betrouwbare klanten</h2>
             <p class="hyla-klanten-subtitle">Filter of zoek door ons uitgebreide netwerk van gecertificeerde klanten verspreid over alle provincies en gewesten.</p>
         </div>
